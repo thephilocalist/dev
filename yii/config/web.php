@@ -72,6 +72,13 @@ $config = [
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/authors/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/authors/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
 
+                /* SOCIALS */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/socials/index', 'route' => '/xthehiddenphiloclstadminurlx/socials/index', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/socials/create', 'route' => '/xthehiddenphiloclstadminurlx/socials/create', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/socials/update', 'route' => '/xthehiddenphiloclstadminurlx/socials/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/socials/delete', 'route' => '/xthehiddenphiloclstadminurlx/socials/delete', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/socials/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/socials/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
+
                 /* ABOUT US */
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/about/index', 'route' => '/xthehiddenphiloclstadminurlx/about/index', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/about/update', 'route' => '/xthehiddenphiloclstadminurlx/about/update', 'normalizer' => ['collapseSlashes' => false]],
@@ -80,6 +87,9 @@ $config = [
 
                 /* WELCOME */
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/welcome/update', 'route' => '/xthehiddenphiloclstadminurlx/welcome/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/welcome/update', 'route' => '/xthehiddenphiloclstadminurlx/welcome/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/welcome/photo', 'route' => '/xthehiddenphiloclstadminurlx/welcome/photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/welcome/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/welcome/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
 
                 /* BLOG */
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/index', 'route' => '/xthehiddenphiloclstadminurlx/blog/index', 'normalizer' => ['collapseSlashes' => false]],

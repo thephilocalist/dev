@@ -58,7 +58,7 @@ class AuthorsController extends Controller
 
     public function actionIndex()
     {
-        $model = Authors::findOne('1');
+        $model = Authors::find()->all();
         
         return $this->render('/admin/authors/index', [
             'model' => $model,

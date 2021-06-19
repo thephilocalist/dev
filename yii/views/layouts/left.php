@@ -21,6 +21,7 @@
                     ['label' => 'About Us Page', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],/* 
                     ['label' => 'Newsletter Users', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/newsletter/index']], */
                     ['label' => 'Authors', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/authors/index']],
+                    ['label' => 'Social', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/socials/index']],
                     ['label' => 'Admin Users', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/adminusers/index']],
                     /*
                     [

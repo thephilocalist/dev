@@ -6,26 +6,22 @@ use Yii;
 use yii\helpers\BaseHtml;
 
 /**
- * This is the model class for table "{{%welcome}}"
+ * This is the model class for table "{{%socials}}"
  * 
  * @property $id
- * @property $title
- * @property $text
- * @property $meta_title
- * @property $meta_description
- * @property $meta_keywords
- * @property $photo
+ * @property $name
+ * @property $link
  * 
  */
 
- class Welcome extends \yii\db\ActiveRecord
+ class Socials extends \yii\db\ActiveRecord
  {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%welcome}}';
+        return '{{%socials}}';
     }
 
     /**
@@ -34,7 +30,7 @@ use yii\helpers\BaseHtml;
     public function rules()
     {
         return [
-            [['title', 'text', 'meta_title', 'meta_description', 'meta_keywords', 'photo'], 'string'],
+            [['name', 'link'], 'string'],
             [['id'], 'integer'],
         ];
     }
@@ -46,8 +42,8 @@ use yii\helpers\BaseHtml;
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'text' => Yii::t('app', 'Text'),
+            'name' => Yii::t('app', 'Name'),
+            'link' => Yii::t('app', 'Link'),
         ];
     }
 

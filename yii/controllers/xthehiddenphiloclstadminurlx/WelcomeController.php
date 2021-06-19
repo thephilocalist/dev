@@ -7,7 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\db\Welcome;
-use PhpOffice\PhpSpreadsheet\Calculation\Financial\Securities\Price;
+use app\models\upload\WelcomePhotoUpload;
+use yii\web\UploadedFile;
 
 class WelcomeController extends Controller
 {
@@ -55,6 +56,15 @@ class WelcomeController extends Controller
         ];
     }
 
+    public function actionIndex()
+    {
+        $model =  Welcome::find()->one();
+        
+        return $this->render('/admin/welcome/index', [
+            'model' => $model,
+        ]);
+    }
+
     public function actionUpdate()
     {
         if (Yii:: $app->request->post()) {
@@ -71,14 +81,47 @@ class WelcomeController extends Controller
         }
 
         if (Yii::$app->request->get('redirect')) {
-            $model = Welcome::findOne('1');
+            $model =  Welcome::find()->one();
 
             return $this->render('/admin/welcome/update', ['model' => $model] );
         } else {
-
-            $model = Welcome::findOne('1');
+            $model =  Welcome::find()->one();
             
             return $this->render('/admin/welcome/update', ['model' => $model] );
+        }
+    }
+
+    public function actionPhoto($id)
+    {
+        $model =  Welcome::find()->where(['id' => $id])->one();
+
+        return $this->render('/admin/welcome/photo', [
+            'model' => $model,
+            ]);
+    }
+
+    public function actionUploadPhoto($id)
+    {
+        $model =  Welcome::find()->where(['id' => $id])->one();
+        $photo = new WelcomePhotoUpload();
+        $photo->imageFile = UploadedFile::getInstanceByName('imageFile');
+        $photo->photo = \Yii::$app->security->generateRandomString();
+
+        if ($photo->upload($id)) {
+
+            $model->photo = $photo->photo;
+
+            if ($model->save()) {     
+
+                $this->redirect(['photo', 'id' => $id]);
+
+            } else {
+
+                return false;
+            }
+
+        } else {
+            return ["error" => $photo->getErrors('imageFile')];
         }
     }
 }
