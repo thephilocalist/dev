@@ -98,6 +98,12 @@ class AuthorsController extends Controller
             $model->meta_title = Yii::$app->request->post('Authors')['meta_title'];
             $model->meta_description = Yii::$app->request->post('Authors')['meta_description'];
             $model->meta_keywords = Yii::$app->request->post('Authors')['meta_keywords'];
+            $model->facebook = Yii::$app->request->post('Authors')['facebook'];
+            $model->twitter = Yii::$app->request->post('Authors')['twitter'];
+            $model->linkedin = Yii::$app->request->post('Authors')['linkedin'];
+            $model->google = Yii::$app->request->post('Authors')['google'];
+            $model->instagram = Yii::$app->request->post('Authors')['instagram'];
+            $model->pinterest = Yii::$app->request->post('Authors')['pinterest'];
 
             if ($model->save()) {
                 return $this->redirect(['update', 'id' => $model->id]);

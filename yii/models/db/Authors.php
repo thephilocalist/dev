@@ -15,6 +15,14 @@ use yii\helpers\BaseHtml;
  * @property $meta_description
  * @property $meta_keywords
  * @property $photo
+ * @property string $facebook
+ * @property string $twitter
+ * @property string $linkedin
+ * @property string $google
+ * @property string $instagram
+ * @property string $pinterest
+ * 
+ * @property Articles[] $Articles
  * 
  */
 
@@ -36,6 +44,12 @@ use yii\helpers\BaseHtml;
         return [
             [['name', 'bio', 'meta_title', 'meta_description', 'meta_keywords', 'photo'], 'string'],
             [['id'], 'integer'],
+            ['facebook', 'url', 'defaultScheme' => 'https'],
+            ['twitter', 'url', 'defaultScheme' => 'https'],
+            ['linkedin', 'url', 'defaultScheme' => 'https'],
+            ['google', 'url', 'defaultScheme' => 'https'],
+            ['instagram', 'url', 'defaultScheme' => 'https'],
+            ['pinterest', 'url', 'defaultScheme' => 'https'],
         ];
     }
 
@@ -49,6 +63,12 @@ use yii\helpers\BaseHtml;
             'name' => Yii::t('app', 'Name'),
             'bio' => Yii::t('app', 'Bio'),
             'photo' => Yii::t('app', 'Photo'),
+            'facebook' => Yii::t('app', 'Facebook'),
+            'twitter' => Yii::t('app', 'Twitter'),
+            'linkedin' => Yii::t('app', 'Linkedin'),
+            'google' => Yii::t('app', 'Google'),
+            'instagram' => Yii::t('app', 'Instagram'),
+            'pinterest' => Yii::t('app', 'Pinterest'),
         ];
     }
 

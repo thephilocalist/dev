@@ -14,11 +14,11 @@
                             ['label' => 'Welcome', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/welcome/company-update']],
                             ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/services-update']],
                         ],
-                    ], */ /* 
+                    ], */ 
                     ['label' => 'Categories', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/categories/index']],
-                    ['label' => 'Articles', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/blog/index']], */
+                    ['label' => 'Articles', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/articles/index']],
                     ['label' => 'Welcome', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/welcome/update']],
-                    ['label' => 'About Us Page', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],/* 
+                    ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],/* 
                     ['label' => 'Newsletter Users', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/newsletter/index']], */
                     ['label' => 'Authors', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/authors/index']],
                     ['label' => 'Social', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/socials/index']],

@@ -44,6 +44,9 @@ JS
 ?>
 <div class="box-body">
   <?php $form = ActiveForm::begin(); ?>
+  <div class="col-md-6">
+  <?= $form->field($model, 'name')->textInput()->label('Name');?>
+  </div>
   <?= $form->field($model, 'id')->label(false)->textInput(['class' => 'hide']);?>
   <div class="col-md-4">
   <?= $form->field($model, 'meta_title')->textInput()->label('Meta Title');?>
@@ -54,8 +57,23 @@ JS
   <div class="col-md-4">
   <?= $form->field($model, 'meta_keywords')->textInput()->label('Meta Keywords');?>
   </div>
-  <div class="col-md-6">
-  <?= $form->field($model, 'name')->textInput()->label('Name');?>
+  <div class="col-md-3">
+  <?= $form->field($model, 'facebook')->textInput()->label('Facebook');?>
+  </div>
+  <div class="col-md-2">
+  <?= $form->field($model, 'twitter')->textInput()->label('Twitter');?>
+  </div>
+  <div class="col-md-2">
+  <?= $form->field($model, 'linkedin')->textInput()->label('Linked In');?>
+  </div>
+  <div class="col-md-2">
+  <?= $form->field($model, 'google')->textInput()->label('Google');?>
+  </div>
+  <div class="col-md-2">
+  <?= $form->field($model, 'instagram')->textInput()->label('Instagram');?>
+  </div>
+  <div class="col-md-2">
+  <?= $form->field($model, 'pinterest')->textInput()->label('Pinterest');?>
   </div>
   <div class="col-md-12">
   <?= $form->field($model, 'bio')->label('Bio')->textarea(['class' => 'rich', 'id' => 'characteristics_text', 'rows' => 10]) ?><br> 
