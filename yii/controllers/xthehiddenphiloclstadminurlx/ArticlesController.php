@@ -5,7 +5,7 @@ namespace app\controllers\xthehiddenphiloclstadminurlx;
 use Yii;
 use app\models\db\Authors;
 use app\models\db\Articles;
-use app\models\upload\AuthorsPhotosUpload;
+use app\models\upload\ArticlesPhotosUpload;
 use app\models\search\AuthorsSearch;
 use app\models\search\ArticlesSearch;
 use app\models\search\CategoriesSearch;
@@ -100,6 +100,7 @@ class ArticlesController extends Controller
             'model' => $model,
         ]);
     }
+
     public function actionUpdate()
     {
         if (Yii:: $app->request->post()) {
@@ -126,6 +127,92 @@ class ArticlesController extends Controller
             return $this->render('/admin/articles/update', ['model' => $model] );
         }
 
+    }
+
+    public function actionEnable()
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $model->published = '1';
+
+        if ($model->save()) {
+
+            return $this->redirect(['update', 'id' => $model->id]);
+        }
+
+    }
+
+    public function actionDisable()
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $model->published = '0';
+
+        if ($model->save()) {
+
+            return $this->redirect(['update', 'id' => $model->id]);
+        }
+
+    }
+
+    public function actionText()
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        
+        if (Yii:: $app->request->post()) {
+            $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+            $model->title = Yii::$app->request->post('Articles')['title'];
+            $model->text = Yii::$app->request->post('Articles')['text'];
+
+            if ($model->save()) {
+                return $this->redirect(['text', 'id' => $model->id]);
+            }
+        }
+
+        if (Yii::$app->request->get('redirect')) {
+            $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+    
+            return $this->render('/admin/articles/text', ['model' => $model] );
+        } else {
+    
+            $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+            
+            return $this->render('/admin/articles/text', ['model' => $model] );
+        }
+
+    }
+
+    public function actionPhoto()
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+
+        return $this->render('/admin/articles/photo', [
+            'article' => $model,
+            ]);
+
+    }
+
+    public function actionUploadPhoto($id)
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $photo = new ArticlesPhotosUpload();
+        $photo->imageFile = UploadedFile::getInstanceByName('imageFile');
+        $photo->photo = \Yii::$app->security->generateRandomString();
+
+        if ($photo->upload($id)) {
+
+            $model->photo = $photo->photo;
+
+            if ($model->save()) {     
+
+                $this->redirect(['photo', 'id' => $id]);
+
+            } else {
+
+                return false;
+            }
+
+        } else {
+            return ["error" => $photo->getErrors('imageFile')];
+        }
     }
 
 }

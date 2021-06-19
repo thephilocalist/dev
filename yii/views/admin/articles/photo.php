@@ -22,11 +22,11 @@ $this->title = ucfirst($type); */
 <div class="box">
 <div class="col-md-12">
     <div class="spacer-10"></div>
-    <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all categories', ['/Xthehiddenphiloclstadminurlx/categories/index'], ['class' => 'btn btn-primary'])?>
+    <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all articles', ['/Xthehiddenphiloclstadminurlx/articles/index'], ['class' => 'btn btn-primary'])?>
 </div>
 <div class="spacer-30"></div>
 
-<?php $this->beginContent('@app/views/admin/blog/blogmenu.php', ['active' => 'photo', 'id' => $article->id]); ?>
+<?php $this->beginContent('@app/views/admin/articles/articlesmenu.php', ['active' => 'photo', 'id' => $article->id]); ?>
 <?php $this->endContent(); ?>
 <div class="spacer-30"></div>
 <div class="clearfix"></div>
@@ -41,7 +41,7 @@ $this->title = ucfirst($type); */
           'multiple'=> false
         ],
         'pluginOptions' => [
-            'uploadUrl' => Url::to(['/Xthehiddenphiloclstadminurlx/blog/upload-photo', 'id' => $article->id]),
+            'uploadUrl' => Url::to(['/Xthehiddenphiloclstadminurlx/articles/upload-photo', 'id' => $article->id]),
             'showPreview' => true,
             'showCaption' => true,
             'showRemove' => false,

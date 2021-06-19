@@ -56,6 +56,7 @@ $config = [
 
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/login', 'route' => '/xthehiddenphiloclstadminurlx/admin/login', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/logout', 'route' => '/xthehiddenphiloclstadminurlx/admin/logout', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'upload/redactor-photo', 'route' => '/xthehiddenphiloclstadminurlx/upload/redactor', 'normalizer' => ['collapseSlashes' => false]],
                 
                 /* ADMIN USERS */
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/adminusers/index', 'route' => '/xthehiddenphiloclstadminurlx/adminusers/index', 'normalizer' => ['collapseSlashes' => false]],
@@ -87,6 +88,7 @@ $config = [
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/index', 'route' => '/xthehiddenphiloclstadminurlx/articles/index', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/rest', 'route' => '/xthehiddenphiloclstadminurlx/articles/rest', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/update', 'route' => '/xthehiddenphiloclstadminurlx/articles/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/text', 'route' => '/xthehiddenphiloclstadminurlx/articles/text', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/photo', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/delete', 'route' => '/xthehiddenphiloclstadminurlx/articles/delete', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/upload-photo', 'normalizer' => ['collapseSlashes' => false]],

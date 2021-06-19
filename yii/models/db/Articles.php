@@ -22,6 +22,7 @@ use Cocur\Slugify\Slugify;
  * @property string $meta_title
  * @property string $meta_description
  * @property string $meta_keywords
+ * @property string $photo
  * @property int $publish_at
  * @property int $published_at
  * @property int $updated_at
@@ -54,9 +55,9 @@ class Articles extends \yii\db\ActiveRecord
         return [
             [['author_id', 'title'], 'required'],
             [['author_id', 'published_at', 'updated_at', 'created_at', 'publish_at'], 'integer'],
-            [['text', 'meta_keywords'], 'string'],
+            [['text', 'meta_keywords', 'photo'], 'string'],
             [['published'], 'integer'],
-            [['title'], 'string', 'max' => 255],
+            [['title', 'photo'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 300],
             [['meta_title'], 'string', 'max' => 70],
             [['meta_description'], 'string', 'max' => 160],
@@ -91,6 +92,7 @@ class Articles extends \yii\db\ActiveRecord
             'published' => Yii::t('app', 'Published'),
             'title' => Yii::t('app', 'Title'),
             'slug' => Yii::t('app', 'Slug'),
+            'photo' => Yii::t('app', 'Photo'),
             'text' => Yii::t('app', 'Text'),
             'meta_title' => Yii::t('app', 'Meta Title'),
             'meta_description' => Yii::t('app', 'Meta Description'),
