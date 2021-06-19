@@ -20,7 +20,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\db\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -43,14 +43,56 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                /*
+                |--------------------------------------------------------------------------
+                | ADMIN
+                |--------------------------------------------------------------------------
+                */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/login', 'route' => '/xthehiddenphiloclstadminurlx/admin/login', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/logout', 'route' => '/xthehiddenphiloclstadminurlx/admin/logout', 'normalizer' => ['collapseSlashes' => false]],
+                
+                /* ADMIN USERS */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/adminusers/index', 'route' => '/xthehiddenphiloclstadminurlx/adminusers/index', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/adminusers/create', 'route' => '/xthehiddenphiloclstadminurlx/adminusers/create', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/adminusers/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/adminusers/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/adminusers/delete', 'route' => '/xthehiddenphiloclstadminurlx/adminusers/delete', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/adminusers/update', 'route' => '/xthehiddenphiloclstadminurlx/adminusers/update', 'normalizer' => ['collapseSlashes' => false]],
+
+                /* AUTHORS */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/index', 'route' => '/xthehiddenphiloclstadminurlx/authors/index', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/create', 'route' => '/xthehiddenphiloclstadminurlx/authors/create', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/update', 'route' => '/xthehiddenphiloclstadminurlx/authors/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/photo', 'route' => '/xthehiddenphiloclstadminurlx/authors/photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/delete', 'route' => '/xthehiddenphiloclstadminurlx/authors/delete', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/authors/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/authors/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
+
+                /* ABOUT US */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/about/index', 'route' => '/xthehiddenphiloclstadminurlx/about/index', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/about/update', 'route' => '/xthehiddenphiloclstadminurlx/about/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/about/photo', 'route' => '/xthehiddenphiloclstadminurlx/about/photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/about/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/about/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
+
+                /* WELCOME */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/welcome/update', 'route' => '/xthehiddenphiloclstadminurlx/welcome/update', 'normalizer' => ['collapseSlashes' => false]],
+
+                /* BLOG */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/index', 'route' => '/xthehiddenphiloclstadminurlx/blog/index', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/rest', 'route' => '/xthehiddenphiloclstadminurlx/blog/rest', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/update', 'route' => '/xthehiddenphiloclstadminurlx/blog/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/photo', 'route' => '/xthehiddenphiloclstadminurlx/blog/photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/delete', 'route' => '/xthehiddenphiloclstadminurlx/blog/delete', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/blog/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/enable', 'route' => '/xthehiddenphiloclstadminurlx/blog/enable', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/blog/disable', 'route' => '/xthehiddenphiloclstadminurlx/blog/disable', 'normalizer' => ['collapseSlashes' => false]],
             ],
         ],
-        */
+       
     ],
     'params' => $params,
 ];

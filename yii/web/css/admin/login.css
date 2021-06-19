@@ -1,0 +1,19 @@
+@charset "UTF-8";
+body{
+	background: url(../../img/static/bg/login.jpg);
+	background-repeat:no-repeat !important;
+	background-size:cover !important;
+	background-position:center !important;
+}
+body > .grid {
+    height: 100%;
+}
+body .column {
+    max-width: 450px;
+}
+h2{
+	width:100%;
+}
+.form-group {
+    width: 100%;
+}

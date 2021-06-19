@@ -1,0 +1,98 @@
+.spacer-30 {
+  margin-bottom: 30px;
+}
+.spacer-10 {
+  margin-bottom: 10px;
+}
+.spacer-20 {
+  margin-bottom: 20px;
+}
+.success-msg {
+  display: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  vertical-align: middle;
+}
+
+.grid-image {
+  border-radius: 50px;
+}
+
+.map-box .box-body {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+#place-map {
+  width: 100%;
+  float: left;
+  height: 300px;
+}
+
+.spacer-30 {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 30px;
+}
+
+.spacer-50 {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 50px;
+}
+
+table.vertical-align th, table.vertical-align td {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+.redactor-styles {
+  font-family: "Trebuchet MS", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+  font-weight: 400 !important;
+}
+
+#article-state label, #offer-redeem-method label {
+  width: 33%;
+}
+
+#place-state label {
+  width: 20%;
+}
+
+.mydropzone {
+  border: 1px dashed #000 !important;
+  border-radius: 5px;
+  background: rgb(245, 245, 245) !important;
+}
+
+.mydropzone h4 {
+  font-weight: bold;
+}
+
+.mydropzone span {
+  font-weight: 400;
+}
+
+#article-photo {
+  display: block;
+  margin: auto;
+  border-radius: 100px;
+  margin-top: 30px;
+}
+
+.permanent-display {
+  display: none;
+}
+.login-page {
+  background: #000 !important;
+}
