@@ -30,6 +30,7 @@ use Cocur\Slugify\Slugify;
  * 
  * @property Authors $authors
  * @property Categories $category
+ * @property Categories $category
  */
 class Articles extends \yii\db\ActiveRecord
 {
@@ -102,6 +103,7 @@ class Articles extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated' => Yii::t('app', 'Updated'),
+            'Categories' => Yii::t('app', ' '),
         ];
     }
 
@@ -118,7 +120,7 @@ class Articles extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasMany(Categories::className(), ['id' => 'category_id']);
+        return $this->hasMany(ArticleCategories::className(), ['article_id' => 'id']);
     }
 
     /**

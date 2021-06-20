@@ -5,6 +5,8 @@ namespace app\controllers\xthehiddenphiloclstadminurlx;
 use Yii;
 use app\models\db\Authors;
 use app\models\db\Articles;
+use app\models\db\Categories;
+use app\models\db\ArticleCategories;
 use app\models\upload\ArticlesPhotosUpload;
 use app\models\search\AuthorsSearch;
 use app\models\search\ArticlesSearch;
@@ -104,12 +106,46 @@ class ArticlesController extends Controller
     public function actionUpdate()
     {
         if (Yii:: $app->request->post()) {
+            $categories = Categories::find()->all();
             $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
-            $model->title = Yii::$app->request->post('Articles')['title'];
+            $this_article_categories = ArticleCategories::find()->where(['article_id' => $model->id])->all();
+            
             $model->author_id = Yii::$app->request->post('Articles')['author_id'];
             $model->meta_title = Yii::$app->request->post('Articles')['meta_title'];
             $model->meta_description = Yii::$app->request->post('Articles')['meta_description'];
             $model->meta_keywords = Yii::$app->request->post('Articles')['meta_keywords'];
+
+            foreach($categories as $category) {
+                if ($this_article_categories) {
+                    foreach($this_article_categories as $this_article_category) {
+                        if ($this_article_category->category_id == $category->id) {
+                            if( Yii::$app->request->post()[$category->id] == 0){
+                                $artcle_category = ArticleCategories::find()->where(['article_id' => $model->id])->andWhere(['category_id' => $category->id])->one();
+                                $artcle_category->delete();               
+                            }
+                        } else {
+                            if( Yii::$app->request->post()[$category->id] == 1){
+                                $artcle_category = ArticleCategories::find()->where(['article_id' => $model->id])->andWhere(['category_id' => $category->id])->one();
+
+                                if($artcle_category) {
+                                } else {
+                                    $artcle_category = new ArticleCategories();
+                                    $artcle_category->article_id = $model->id;
+                                    $artcle_category->category_id = $category->id;
+                                    $artcle_category->save();
+                                }
+                            }    
+                        }
+                    }
+                } else {
+                    if(Yii::$app->request->post()[$category->id] == 1){
+                        $artcle_category = new ArticleCategories();
+                        $artcle_category->article_id = $model->id;
+                        $artcle_category->category_id = $category->id;
+                        $artcle_category->save();
+                    }
+                }
+            }
 
             if ($model->save()) {
                 return $this->redirect(['update', 'id' => $model->id]);
