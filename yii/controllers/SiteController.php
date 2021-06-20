@@ -9,9 +9,21 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\db\Articles;
+use app\models\db\Categories;
+use app\models\db\Authors;
+use app\models\db\About;
+use app\models\db\Welcome;
+use app\models\db\Socials;
+use app\models\db\ArticleCategories;
+use app\models\db\ArticleCategoriesQuery;
+use app\models\search\ArticlesSearch;
+use app\models\search\AuthorsSearch;
+use app\models\search\CategoriesSearch;
 
 class SiteController extends Controller
 {
+    public $layout = '@app/views/layouts/site.php';
     /**
      * {@inheritdoc}
      */
