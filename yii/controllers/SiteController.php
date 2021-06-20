@@ -20,6 +20,7 @@ use app\models\db\ArticleCategoriesQuery;
 use app\models\search\ArticlesSearch;
 use app\models\search\AuthorsSearch;
 use app\models\search\CategoriesSearch;
+use Cocur\Slugify\Slugify;
 
 class SiteController extends Controller
 {
@@ -73,7 +74,35 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
+        $welcome = Welcome::find()->one();
+        $articles = Articles::find()->where(['published' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
+        $main_articles = Articles::find()->where(['published' => '1'])->andWhere(['main' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
+        $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+        $authors = Authors::find()->all();
+
+        return $this->render('index', [
+            'categories' => $categories,
+            'articles' => $articles,
+            'main_articles' => $main_articles,
+            'favourite_articles' => $favourite_articles,
+            'authors' => $authors,
+            'welcome' => $welcome,
+
+        ]);
+    }
+
+    public function actionSearchArticles($name)
+    {
+        $slugify = new Slugify();
+        $term = $slugify->slugify($name);
+        $articles = Articles::find()->
+                                  select(['slug as slug', 'title as value', 'id as id'])->
+                                  where(['like', 'slug', $term])->
+                                  asArray()->
+                                  all();
+
+        return $this->asJson($articles);
     }
 
     /**

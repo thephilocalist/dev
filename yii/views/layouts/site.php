@@ -127,83 +127,11 @@ AppAsset::register($this);
     </footer>
     <!-- End Footer -->
 
-
     <?php $this->endBody() ?>
     
-    <script src="js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/owl.carousel.min.js"></script>
-    <script>
-      $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:30,
-        lazyload:true,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                lazyload:true,
-                items:1,
-                dots:true,
-                nav:true
-            },
-            600:{
-                lazyload:true,
-                items:2.5,
-                nav:false
-            },
-            1000:{
-                lazyload:true,
-                items:3.2,
-                nav:true,
-                loop:true
-            },
-            2000:{
-                lazyload:true,
-                items:4.2,
-                nav:false
-            }
-          }
-      })
-    </script>
-    <script>
-      /* Load More */
-      $(function() {
-        $(".category-load").slice(0, 3).show(); // select the first ten
-        $("#load").click(function(e){ // click event for load more
-          e.preventDefault();
-          $(".category-load:hidden").slice(0, 3).show();
-          if ($(".category-load:hidden").length == 0) {
-              $("#load").fadeOut('slow');
-          }
-        });
-      });
-      /* Back to top */
-      $('#top').click(function () {
-          $('body,html').animate({
-              scrollTop: 0
-          }, 999);
-          return false;
-      });
-    </script>
-    <script>
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            $('.totop').fadeIn();
-        } else {
-            $('.totop').fadeOut();
-        }
-    });
-    </script>
-    <script>
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            $('.sticky-navigation-bar').fadeIn();
-        } else {
-            $('.sticky-navigation-bar').fadeOut();
-        }
-    });
-    </script>
-
+    <script src="js/app.js"></script>
 </body>
 </html>
 <?php $this->endPage(); ?>

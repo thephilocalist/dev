@@ -5,6 +5,9 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use yiister\gentelella\widgets\Panel;
 use app\models\db\Authors;
+use yii\helpers\BaseUrl;
+
+$model = $searchModel->find()->one();
 
 ?>
 
@@ -91,7 +94,7 @@ use app\models\db\Authors;
               'template' => '{view} {update} {delete}',
               'buttons' => [
                 'view' => function ($url, $model) {
-                    $url = 'articles/'.$model->slug;
+                    $url = Url::base(true).'/articles/'.$model->slug;
 
                     return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => 'update', 'target' => '_blank']);
                 },

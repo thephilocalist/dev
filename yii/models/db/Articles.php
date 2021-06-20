@@ -30,9 +30,9 @@ use Cocur\Slugify\Slugify;
  * @property int $updated_at
  * @property int $created_at
  * 
- * @property Authors $authors
- * @property Categories $category
- * @property Categories $category
+ * @property authors $authors
+ * @property categories[] $categories
+ * @property Categories $categories
  */
 class Articles extends \yii\db\ActiveRecord
 {
@@ -121,9 +121,17 @@ class Articles extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategory()
+    public function getCategories()
     {
         return $this->hasMany(ArticleCategories::className(), ['article_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(ArticleCategories::className(), ['article_id' => 'id']);
     }
 
     /**

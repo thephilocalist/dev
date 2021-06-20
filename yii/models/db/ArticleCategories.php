@@ -11,8 +11,8 @@ use Yii;
  * @property int $article_id
  * @property int $category_id
  *
- * @property Articles $article
- * @property Categories $category
+ * @property articles $article
+ * @property categories $category
  */
 class ArticleCategories extends \yii\db\ActiveRecord
 {

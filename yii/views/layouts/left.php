@@ -14,9 +14,9 @@
                             ['label' => 'Welcome', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/welcome/company-update']],
                             ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/services-update']],
                         ],
-                    ], */ 
-                    ['label' => 'Categories', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/categories/index']],
+                    ], */
                     ['label' => 'Articles', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/articles/index']],
+                    ['label' => 'Categories', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/categories/index']],
                     ['label' => 'Welcome', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/welcome/update']],
                     ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],/* 
                     ['label' => 'Newsletter Users', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/newsletter/index']], */

@@ -92,7 +92,6 @@ class CategoriesController extends Controller
 
                 $model = new Categories();
                 $model->title = Yii::$app->request->post('Categories')['title'];
-                $model->slung = Yii::$app->request->post('Categories')['slung'];
                 $model->meta_title = Yii::$app->request->post('Categories')['meta_title'];
                 $model->meta_description = Yii::$app->request->post('Categories')['meta_description'];
                 $model->meta_keywords = Yii::$app->request->post('Categories')['meta_keywords'];
@@ -113,12 +112,12 @@ class CategoriesController extends Controller
 
         if (Yii::$app->request->post()) {
             $category = Categories::find()->where(['id' => Yii::$app->request->get('id')])->one();
+            $category->enable = Yii::$app->request->post('Categories')['enable'];
             $category->title = Yii::$app->request->post('Categories')['title'];
-            $category->slung = Yii::$app->request->post('Categories')['slung'];
             $category->meta_title = Yii::$app->request->post('Categories')['meta_title'];
             $category->meta_description = Yii::$app->request->post('Categories')['meta_description'];
             $category->meta_keywords = Yii::$app->request->post('Categories')['meta_keywords'];
-
+            
             if ($category->save()) {
                 return $this->redirect(['update', 'id' => $category->id]);
             }

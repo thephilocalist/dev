@@ -1,6 +1,8 @@
 <?php 
 
 namespace app\models\db;
+use Cocur\Slugify\Slugify;
+use yii\behaviors\SluggableBehavior;
 
 use Yii;
 use yii\helpers\BaseHtml;
@@ -21,6 +23,7 @@ use yii\helpers\BaseHtml;
  * @property string $google
  * @property string $instagram
  * @property string $pinterest
+ * @property string $slug
  * 
  * @property Articles[] $Articles
  * 
@@ -36,13 +39,28 @@ use yii\helpers\BaseHtml;
         return '{{%authors}}';
     }
 
+    public function behaviors()
+    {
+        return [
+          [
+            'class' => SluggableBehavior::className(),
+            'value' => function () {
+                $slugify = new Slugify();
+
+                return  $slugify->slugify($this->title);
+            },
+            'ensureUnique' => true,
+          ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['name', 'bio', 'meta_title', 'meta_description', 'meta_keywords', 'photo'], 'string'],
+            [['name', 'bio', 'meta_title', 'meta_description', 'meta_keywords', 'photo', 'slug'], 'string'],
             [['id'], 'integer'],
             ['facebook', 'url', 'defaultScheme' => 'https'],
             ['twitter', 'url', 'defaultScheme' => 'https'],
@@ -69,6 +87,7 @@ use yii\helpers\BaseHtml;
             'google' => Yii::t('app', 'Google'),
             'instagram' => Yii::t('app', 'Instagram'),
             'pinterest' => Yii::t('app', 'Pinterest'),
+            'slug' => Yii::t('app', 'Slug'),
         ];
     }
 

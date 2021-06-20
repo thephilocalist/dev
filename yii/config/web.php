@@ -53,7 +53,7 @@ $config = [
                 | SITE
                 |--------------------------------------------------------------------------
                 */
-                ['pattern' => 'category/<slung:[A-Za-z0-9_-]+>', 'route' => 'site/category', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'category/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/category', 'normalizer' => ['collapseSlashes' => false]],
 
 
 

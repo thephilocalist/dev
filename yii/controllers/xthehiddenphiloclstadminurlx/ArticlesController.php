@@ -86,8 +86,7 @@ class ArticlesController extends Controller
 
         if (Yii::$app->request->post()) {
             if ($model->load(Yii::$app->request->post())) {
-                /* 
-                print_r(Yii::$app->request->post());die; */
+                
                 $model = new Articles();
                 $model->title = Yii::$app->request->post('Articles')['title'];
                 $model->author_id = Yii::$app->request->post('Articles')['author_id'];

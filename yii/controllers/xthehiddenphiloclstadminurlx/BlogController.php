@@ -82,7 +82,7 @@ class BlogController extends Controller
             if ($model->load(Yii::$app->request->post())) {
                 $model = new Articles();
                 $model->title = Yii::$app->request->post('Articles')['title'];
-                $model->slung = Yii::$app->request->post('Articles')['slung'];
+                $model->slug = Yii::$app->request->post('Articles')['slug'];
                 $model->meta_title = Yii::$app->request->post('Articles')['meta_title'];
                 $model->meta_description = Yii::$app->request->post('Articles')['meta_description'];
                 $model->meta_keywords = Yii::$app->request->post('Articles')['meta_keywords'];
@@ -107,7 +107,7 @@ class BlogController extends Controller
         if (Yii::$app->request->post()) {
             $article = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
             $article->title = Yii::$app->request->post('Articles')['title'];
-            $article->slung = Yii::$app->request->post('Articles')['slung'];
+            $article->slug = Yii::$app->request->post('Articles')['slug'];
             $article->meta_title = Yii::$app->request->post('Articles')['meta_title'];
             $article->meta_description = Yii::$app->request->post('Articles')['meta_description'];
             $article->meta_keywords = Yii::$app->request->post('Articles')['meta_keywords'];

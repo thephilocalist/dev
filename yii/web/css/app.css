@@ -28,7 +28,36 @@
 
 .category-load {
   display: none; }
-
+  .category-load-1 {
+      display: none;
+  }
+  .category-load-2 {
+      display: none;
+  }
+  .category-load-3 {
+      display: none;
+  }
+  .category-load-4 {
+      display: none;
+  }
+  .category-load-5 {
+      display: none;
+  }
+  .category-load-6 {
+      display: none;
+  }
+  .category-load-7 {
+      display: none;
+  }
+  .category-load-8 {
+      display: none;
+  }
+  .category-load-9 {
+      display: none;
+  }
+  .category-load-10 {
+      display: none;
+  }
 .load_more {
   width: 150px;
   height: 40px;
