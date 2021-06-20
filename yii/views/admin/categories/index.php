@@ -38,7 +38,7 @@ $this->title = 'Categories';
                     <img ng-src="/images/categories/{{category.photo}}@100x100.jpg">
                   </div>
                   <div class="product-info">
-                    <p><a style="color:black;" class="" href="/Xthehiddenphiloclstadminurlx/subcategories/index?category_id={{category.id}}">{{category.title}}</a></p>
+                    <p><a style="color:black;" class="" href="/Xthehiddenphiloclstadminurlx/categories/update?id={{category.id}}">{{category.title}}</a></p>
                   </div>
                   <div class="product-info">
                       <button class="btn btn-danger pull-right margin" role="button" ng-click="delete(category.id)">Delete</button>

@@ -112,6 +112,9 @@ class ArticlesController extends Controller
             
             $model->author_id = Yii::$app->request->post('Articles')['author_id'];
             $model->meta_title = Yii::$app->request->post('Articles')['meta_title'];
+            $model->published = Yii::$app->request->post('Articles')['published'];
+            $model->main = Yii::$app->request->post('Articles')['main'];
+            $model->favourite = Yii::$app->request->post('Articles')['favourite'];
             $model->meta_description = Yii::$app->request->post('Articles')['meta_description'];
             $model->meta_keywords = Yii::$app->request->post('Articles')['meta_keywords'];
 

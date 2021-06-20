@@ -18,7 +18,7 @@ class ArticlesSearch extends Articles
     public function rules()
     {
         return [
-            [['id', 'author_id', 'published_at', 'updated_at', 'created_at', 'publish_at'], 'integer'],
+            [['author_id', 'main', 'favourite'], 'integer'],/* 'id', 'published_at', 'updated_at', 'created_at', 'publish_at', */
             [['published', 'title', 'slug', 'subtitle', 'text', 'meta_title', 'meta_description', 'meta_keywords'], 'safe'],
         ];
     }
@@ -60,15 +60,17 @@ class ArticlesSearch extends Articles
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'author_id' => $this->author_id,
+            'author_id' => $this->author_id,/* 
             'published_at' => $this->published_at,
             'publish_at' => $this->publish_at,
             'updated_at' => $this->updated_at,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at, */
         ]);
 
         $query->andFilterWhere(['like', 'published', $this->published])
             ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'main', $this->main])
+            ->andFilterWhere(['like', 'favourite', $this->favourite])
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'text', $this->text])
             ->andFilterWhere(['like', 'meta_title', $this->meta_title])

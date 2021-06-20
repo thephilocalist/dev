@@ -15,6 +15,8 @@ use Cocur\Slugify\Slugify;
  * @property int $id
  * @property int $author_id
  * @property int $published
+ * @property int $main
+ * @property int $favourite
  * @property string $title
  * @property string $slug
  * @property string $subtitle
@@ -55,9 +57,8 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             [['author_id', 'title'], 'required'],
-            [['author_id', 'published_at', 'updated_at', 'created_at', 'publish_at'], 'integer'],
+            [['author_id', 'published_at', 'updated_at', 'created_at', 'publish_at', 'main', 'favourite', 'published'], 'integer'],
             [['text', 'meta_keywords', 'photo'], 'string'],
-            [['published'], 'integer'],
             [['title', 'photo'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 300],
             [['meta_title'], 'string', 'max' => 70],
@@ -91,6 +92,8 @@ class Articles extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'author_id' => Yii::t('app', 'Author'),
             'published' => Yii::t('app', 'Published'),
+            'main' => Yii::t('app', 'Main'),
+            'favourite' => Yii::t('app', 'Favourite'),
             'title' => Yii::t('app', 'Title'),
             'slug' => Yii::t('app', 'Slug'),
             'photo' => Yii::t('app', 'Photo'),

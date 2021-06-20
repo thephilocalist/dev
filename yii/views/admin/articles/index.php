@@ -45,6 +45,36 @@ use app\models\db\Authors;
               },
             ],
             [
+              'label' => 'Main',
+              'filter' => ['0' => 'No', '1' => 'Yes'],
+              'attribute' => 'main',
+              'value' => function ($model) {
+                switch ($model->main) {
+                  case 0:
+                  return 'No';
+                  break;
+                  case 1:
+                  return 'Yes';
+                  break;
+                }
+              },
+            ],
+            [
+              'label' => 'Favourite',
+              'filter' => ['0' => 'No', '1' => 'Yes'],
+              'attribute' => 'favourite',
+              'value' => function ($model) {
+                switch ($model->favourite) {
+                  case 0:
+                  return 'No';
+                  break;
+                  case 1:
+                  return 'Yes';
+                  break;
+                }
+              },
+            ],
+            [
               'label' => 'Author',
               'attribute' => 'author_id',
               'filter' => ArrayHelper::map(Authors::find()->all(), 'id', 'name'),
@@ -52,10 +82,10 @@ use app\models\db\Authors;
                 return $model->author->name;
               },
             ],
-            'updated_at:date',
-            'created_at:date',
-            'published_at:date',
-            'publish_at:date',
+            'updated_at:date',/* 
+            'created_at:date', */
+            'published_at:date',/* 
+            'publish_at:date', */
             [
               'class' => 'yii\grid\ActionColumn',
               'template' => '{view} {update} {delete}',
