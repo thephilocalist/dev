@@ -11,9 +11,9 @@ use yii\helpers\Url;
 <div class="article-title-wrapper" >
     <h1><?=$article->title?></h1>
     <?php foreach($article->categories as $category):?>
-        <h3><a href="<?=Url::base(true)?>/categories/<?=$category->category->slug?>"><?=strtoupper($category->category->title);?></a></h3>
+        <h3><a href="<?=Url::base(true)?>/category/<?=$category->category->slug?>"><?=strtoupper($category->category->title);?></a></h3>
     <?php endforeach;?>
-    <a href="<?=Url::base(true)?>/authors/<?=$article->author->slug;?>" class="date"><?=date('M d, Y', $article->published_at)?> / by <?=$article->author->name?></a>
+    <a href="<?=Url::base(true)?>/author/<?=$article->author->slug;?>" class="date"><?=date('M d, Y', $article->published_at)?> / by <?=$article->author->name?></a>
 </div>
 <!-- End Title -->
 

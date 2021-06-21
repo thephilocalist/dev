@@ -5,7 +5,6 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 AppAsset::register($this);
-
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
@@ -26,11 +25,21 @@ AppAsset::register($this);
       <div class="column large-8 medium-6">
         <ul class="menu dropdown" data-accordion-menu>
           <li class="nav-btn"><i class="fa fa-bars" data-toggle="offCanvasMenu" aria-hidden="true"></i></li>
-          <li class="show-for-medium"><a href="index.html" class="nav-logo"><img src="<?=Url::base(true)?>/images/the_philocalist.png" ></a></li>
+          <li class="show-for-medium"><a href="<?=Url::base(true)?>" class="nav-logo"><img src="<?=Url::base(true)?>/images/the_philocalist.png" ></a></li>
       </div>
       <div class="column large-4 medium-6 show-for-medium">
         <ul class="menu float-right">
-          <li><a><i class="fab fa-instagram"></i></a></li>
+          <?php foreach($this->params['socials'] as $social):?>
+          <?php if($social->name == 'facebook'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-facebook-f"></i></a></li>
+          <?php elseif($social->name == 'instagram'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-instagram"></i></a></li>
+          <?php elseif($social->name == 'twitter'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-twitter"></i></a></li>
+          <?php else:?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i></a></li>
+          <?php endif;?>
+          <?php endforeach;?>
           <li><a><i class="fas fa-envelope"></i></a></li>
           <li>
             <button class="button search-button" type="button" data-toggle="example-dropdown-bottom-right1"><i class="fas fa-search"></i></button>
@@ -46,15 +55,23 @@ AppAsset::register($this);
           <ul class="vertical dropdown menu accordion-menu" data-accordion-menu>
             <li><span data-toggle="offCanvasMenu" aria-hidden="true">×</span></li>
             <li class="m-b-10"><a href="index.html"><img class="offcanva-logo" src="<?=Url::base(true)?>/images/logo_black.png"></a></li>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="category.html">FASHION</a></li>
-            <li><a href="category.html">LIFESTYLE</a></li>
-            <li><a href="category.html">TRAVEL</a></li>
-            <li><a href="category.html">STORY</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="<?=Url::base(true)?>">HOME</a></li>
+            <?php foreach($this->params['categories'] as $category):?>
+            <li><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=strtoupper($category->title);?></a></li>
+            <?php endforeach;?>
             <li class="padding-a find"><p class="m-0 p-l-10">FIND US</u></p></li>
-            <li><a><i class="fab fa-instagram"></i> INSTAGRAM</a></li>
-            <li><a><i class="fas fa-envelope"></i> EMAIL</a></li>
+          <?php foreach($this->params['socials'] as $social):?>
+          <?php if($social->name == 'facebook'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-facebook-f"></i> <?=strtoupper($social->name);?></a></li>
+          <?php elseif($social->name == 'instagram'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-instagram"></i> <?=strtoupper($social->name);?></a></li>
+          <?php elseif($social->name == 'twitter'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-twitter"></i> <?=strtoupper($social->name);?></a></li>
+          <?php else:?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i> <?=strtoupper($social->name);?></a></li>
+          <?php endif;?>
+          <?php endforeach;?>
+            <li><a><i class="fas fa-envelope"></i></a></li>
             <li class="padding-a d-flex">
               <button class="button search-button" type="button"><i class="fas fa-search"></i></button>
               <input type="search" placeholder="Search Article..." data-auto-focus="true">
@@ -70,11 +87,16 @@ AppAsset::register($this);
     <div class="sticky-navigation-bar show-for-medium">
       <ul class="menu">
         <li class=""><a><i class="fa fa-bars f-s-16" data-toggle="offCanvasMenu" aria-hidden="true"></i></a></li>
-        <li class="show-for-medium"><a href="index.html" class="nav-logo"><img class="" src="<?=Url::base(true)?>/images/the_philocalist.png" ></a>
-        <li class="m-l-auto"><a href="category.html">FASHION</a></li>
-        <li><a href="category.html">LIFESTYLE</a></li>
-        <li><a href="category.html">TRAVEL</a></li>
-        <li class="m-r-auto"><a href="category.html">STORY</a></li>
+        <li class="show-for-medium"><a href="<?=Url::base(true)?>" class="nav-logo"><img class="" src="<?=Url::base(true)?>/images/the_philocalist.png" ></a>
+        <?php $i=0; foreach($this->params['categories'] as $category):?>
+          <?php $i=$i+1; if($i==1):?>
+          <li class="m-l-auto"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=strtoupper($category->title);?></a></li>
+          <?php elseif($i== count($this->params['categories'])):?>
+          <li class="m-r-auto"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=strtoupper($category->title);?></a></li>
+          <?php else:?>
+          <li><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=strtoupper($category->title);?></a></li>
+          <?php endif;?>
+        <?php endforeach;?>
         <li class="m-l-auto">
           <button class="button search-button" type="button" data-toggle="example-dropdown-bottom-right3"><i class="fas fa-search"></i></button>
           <div class="dropdown-pane bottom" data-alignment="right" id="example-dropdown-bottom-right3" data-dropdown>
@@ -98,16 +120,14 @@ AppAsset::register($this);
     <footer>
     <div class="row">
         <div class="column large-4 medium-4 small-12">
-        <a href="index.html"><img class="footer-logo" src="<?=Url::base(true)?>/images/logo_full.png"></a>
+        <a href="<?=Url::base(true)?>"><img class="footer-logo" src="<?=Url::base(true)?>/images/logo_full.png"></a>
         </div>
         <div class="column large-4 medium-4 small-12">
         <ul class="vertical dropdown menu accordion-menu p-inherit" data-accordion-menu>
-            <li><a class="current" href="index.html">HOME</a></li>
-            <li><a href="category.html">FASHION</a></li>
-            <li><a href="category.html">LIFESTYLE</a></li>
-            <li><a href="category.html">TRAVEL</a></li>
-            <li><a href="category.html">STORY</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="<?=Url::base(true)?>">HOME</a></li>
+          <?php foreach($this->params['categories'] as $category):?>
+          <li><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=strtoupper($category->title);?></a></li>
+          <?php endforeach;?>
         </ul>
         </div>
         <div class="column large-4 medium-4 small-12">
@@ -116,7 +136,17 @@ AppAsset::register($this);
             <li>FIND US</li>
         </ul>
         <ul class="horizontal menu footer-social">
-            <li><a><i class="fab fa-instagram"></i></a></li>
+          <?php foreach($this->params['socials'] as $social):?>
+          <?php if($social->name == 'facebook'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-facebook-f"></i></a></li>
+          <?php elseif($social->name == 'instagram'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-instagram"></i></a></li>
+          <?php elseif($social->name == 'twitter'):?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-twitter"></i></a></li>
+          <?php else:?>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i></a></li>
+          <?php endif;?>
+          <?php endforeach;?>
             <li><a><i class="fas fa-envelope"></i></a></li>
         </ul>  
         </div>
@@ -132,6 +162,7 @@ AppAsset::register($this);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/owl.carousel.min.js"></script>
     <script src="<?=Url::base(true)?>/js/app.js"></script>
+    <script src="<?=Url::base(true)?>/js/site.js"></script>
 </body>
 </html>
 <?php $this->endPage(); ?>

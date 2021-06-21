@@ -4,19 +4,19 @@ use yii\helpers\Url;
 ?>
 
 <div class="medium-article">
-    <a href="<?=Url::base(true)?>/articles/<?=$model->slug;?>" class="h_500 medium-article-box" data-src="<?=Url::base(true)?>/images/articles/<?=$model->photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/articles/<?=$model->photo ?>.jpg');">
+    <a href="<?=Url::base(true)?>/article/<?=$model->slug;?>" class="h_500 medium-article-box" data-src="<?=Url::base(true)?>/images/articles/<?=$model->photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/articles/<?=$model->photo ?>.jpg');">
         <div class="overlay">
         </div>
     </a>
     <div class="clearfix"></div>
     <div class="medium-article-texts">
-        <h2 class=""><a href="<?=Url::base(true)?>/articles/<?=$model->slug?>"><b><?=$model->title?></b></a></h2>
+        <h2 class=""><a href="<?=Url::base(true)?>/article/<?=$model->slug?>"><b><?=$model->title?></b></a></h2>
         <div class="spacer-10"></div>
         <div class="article-text">
-            <a href="<?=Url::base(true)?>/articles/<?=$model->slug?>"><?=substr($model->text, 4 ,240);?>...</a>
+            <a href="<?=Url::base(true)?>/article/<?=$model->slug?>"><?=substr($model->text, 4 ,240);?>...</a>
         </div>
         <div class="spacer-10"></div>
-            <a href="<?=Url::base(true)?>/authors/<?=$model->author->slug;?>" class="date"><?=date('M d, Y', $model->published_at)?> / by <?=$model->author->name?></a>
+            <a href="<?=Url::base(true)?>/author/<?=$model->author->slug;?>" class="date"><?=date('M d, Y', $model->published_at)?> / by <?=$model->author->name?></a>
         <div class="spacer-10"></div>
         <ul class="menu">
             <li><p class="p-l-0">share&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right"></i></p></li>

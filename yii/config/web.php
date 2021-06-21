@@ -54,8 +54,8 @@ $config = [
                 |--------------------------------------------------------------------------
                 */
                 ['pattern' => 'category/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/category', 'normalizer' => ['collapseSlashes' => false]],
-                ['pattern' => 'articles/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/articles', 'normalizer' => ['collapseSlashes' => false]],
-                ['pattern' => 'authors/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/authors', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'article/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/article', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'author/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/author', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'search/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/search', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'about-us', 'route' => 'site/about-us', 'normalizer' => ['collapseSlashes' => false]],
 

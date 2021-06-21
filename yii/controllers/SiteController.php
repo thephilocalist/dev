@@ -75,6 +75,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+
         $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
         $welcome = Welcome::find()->one();
         $articles = Articles::find()->where(['published' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
@@ -95,6 +98,9 @@ class SiteController extends Controller
 
     public function actionCategory($slug)
     {
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+
         $category = Categories::find()->where(['enable' => '1'])->andWhere(['slug' => $slug])->one();
         $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
         
@@ -107,8 +113,11 @@ class SiteController extends Controller
 
     }
 
-    public function actionArticles($slug)
+    public function actionArticle($slug)
     {
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+
         $article = Articles::find()->where(['published' => '1'])->andWhere(['slug' => $slug])->one();
         $article_category = ArticleCategories::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->one();
         
@@ -120,8 +129,11 @@ class SiteController extends Controller
 
     }
 
-    public function actionAuthors($slug)
+    public function actionAuthor($slug)
     {
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+
         $author = Authors::find()->where(['slug' => $slug])->one();
         $related_articles = Articles::find()->where(['published' => '1'])->andWhere(['author_id' => $author->id])->orderBy(new Expression('rand()'))->limit(3)->all();
         $articles = Articles::find()->where(['published' => '1'])->andWhere(['author_id' => $author->id])->orderBy(['published_at' => SORT_DESC])->all();
@@ -135,17 +147,40 @@ class SiteController extends Controller
 
     }
 
-    public function actionSearchArticles($name)
+    public function actionAboutUs()
     {
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+
+        $about = About::find()->one();
+        $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+        
+        return $this->render('about', [
+            'about' => $about,
+            'favourite_articles' => $favourite_articles,
+
+        ]);
+
+    }
+
+    public function actionSearch($slug)
+    {
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+
+        $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
         $slugify = new Slugify();
-        $term = $slugify->slugify($name);
+        $term = $slugify->slugify($slug);
         $articles = Articles::find()->
-                                  select(['slug as slug', 'title as value', 'id as id'])->
+                                  select(['*'])->
                                   where(['like', 'slug', $term])->
-                                  asArray()->
                                   all();
 
-        return $this->asJson($articles);
+        return $this->render('search', [
+            'articles' => $articles,
+            'categories' => $categories,
+
+        ]);
     }
 
     /**

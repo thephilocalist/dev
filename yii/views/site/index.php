@@ -3,9 +3,6 @@ use app\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/* @var $this yii\web\View */
-
-$this->title = 'The Philocalist';
 ?>
 
 <!-- Start Logo -->
@@ -33,7 +30,7 @@ $this->title = 'The Philocalist';
     <div class="columns small-12 medium-6">
       <h2><?=$welcome->title?></h2>
       <?=$welcome->text?>
-      <br><a href="about">LEARN MORE</a>
+      <br><a href="<?=Url::base(true)?>/about-us">LEARN MORE</a>
     </div>
   </div>
 </div>
