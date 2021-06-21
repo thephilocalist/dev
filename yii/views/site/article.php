@@ -1,6 +1,27 @@
 <?php
 
 use yii\helpers\Url;
+
+/*META*/
+$metaTitle = $article->meta_title;
+$metaDescription = $article->meta_description;
+$metaKeywords = $article->meta_keywords;
+$metaPhoto = Url::base(true).'/images/'.$article->photo.'.jpg';
+Yii::$app->view->title = $metaTitle;
+Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $metaDescription]);
+Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $metaKeywords]);
+Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => Url::base(true)]);
+Yii::$app->view->registerMetaTag(['property' => 'og:type', 'content' => 'website']);
+Yii::$app->view->registerMetaTag(['property' => 'og:site_name', 'content' => 'The Philocalist']);
+Yii::$app->view->registerMetaTag(['property' => 'og:title', 'content' => $metaTitle]);
+Yii::$app->view->registerMetaTag(['property' => 'og:description', 'content' => $metaDescription]);
+Yii::$app->view->registerMetaTag(['property' => 'og:url', 'content' => Url::base(true)]);
+Yii::$app->view->registerMetaTag(['property' => 'og:image', 'content' => $metaPhoto]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'title', 'content' => $metaTitle]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'description', 'content' => $metaDescription]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'url', 'content' => Url::base(true)]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto]);
+
 ?>
 <!-- Start article-image -->
 <div class="article-image-wrapper" data-src="<?=Url::base(true)?>/images/articles/<?=$article->photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/articles/<?=$article->photo?>.jpg');">

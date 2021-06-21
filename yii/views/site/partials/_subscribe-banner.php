@@ -1,7 +1,16 @@
+<?php
+
+use yii\helpers\Url;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+?>
 <div class="subscribe-banner-container">
-    <form>
-        <input type="text" placeholder="enter your email..">
-        <input type="submit" class="button newsletter-button" value="SUBMIT">
+
+    <?php $form = ActiveForm::begin([
+    ]);?>
+        <?= $form->field($model, 'email')->textInput(['type' => 'text', 'placeholder' => 'Enter your email..', 'autofocus' => false])->label(false);?>
+        <?= Html::submitButton('SUBMIT', ['class' => 'button newsletter-button']) ?>
         <p>Subscribe to our Newsletter and learn our daily storys</p>
-    </form>
+    <?php ActiveForm::end(); ?>
 </div>

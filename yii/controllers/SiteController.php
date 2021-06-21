@@ -4,11 +4,14 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\CClientScript;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\NewsletterForm;
 use app\models\db\Articles;
 use app\models\db\Categories;
 use app\models\db\Authors;
@@ -75,6 +78,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        /* Data for Layout */
         $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
         $this->view->params['socials'] = Socials::find()->all();
 
@@ -84,6 +88,13 @@ class SiteController extends Controller
         $main_articles = Articles::find()->where(['published' => '1'])->andWhere(['main' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
         $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
         $authors = Authors::find()->all();
+        $newsletter = new NewsletterForm();
+
+        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
 
         return $this->render('index', [
             'categories' => $categories,
@@ -92,6 +103,7 @@ class SiteController extends Controller
             'favourite_articles' => $favourite_articles,
             'authors' => $authors,
             'welcome' => $welcome,
+            'newsletter' => $newsletter
 
         ]);
     }
@@ -142,7 +154,6 @@ class SiteController extends Controller
             'related_articles' => $related_articles,
             'author' => $author,
             'articles' => $articles,
-
         ]);
 
     }
@@ -163,14 +174,15 @@ class SiteController extends Controller
 
     }
 
-    public function actionSearch($slug)
+    public function actionSearch($q)
     {
         $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
         $this->view->params['socials'] = Socials::find()->all();
 
+        $welcome = Welcome::find()->one();
         $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
         $slugify = new Slugify();
-        $term = $slugify->slugify($slug);
+        $term = $slugify->slugify($q);
         $articles = Articles::find()->
                                   select(['*'])->
                                   where(['like', 'slug', $term])->
@@ -179,7 +191,7 @@ class SiteController extends Controller
         return $this->render('search', [
             'articles' => $articles,
             'categories' => $categories,
-
+            'welcome' => $welcome,
         ]);
     }
 

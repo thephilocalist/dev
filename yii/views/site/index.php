@@ -3,11 +3,30 @@ use app\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+/*META*/
+$metaTitle = $welcome->meta_title;
+$metaDescription = $welcome->meta_description;
+$metaKeywords = $welcome->meta_keywords;
+$metaPhoto = Url::base(true).'/images/'.$welcome->photo.'.jpg';
+Yii::$app->view->title = $metaTitle;
+Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $metaDescription]);
+Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $metaKeywords]);
+Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => Url::base(true)]);
+Yii::$app->view->registerMetaTag(['property' => 'og:type', 'content' => 'website']);
+Yii::$app->view->registerMetaTag(['property' => 'og:site_name', 'content' => 'The Philocalist']);
+Yii::$app->view->registerMetaTag(['property' => 'og:title', 'content' => $metaTitle]);
+Yii::$app->view->registerMetaTag(['property' => 'og:description', 'content' => $metaDescription]);
+Yii::$app->view->registerMetaTag(['property' => 'og:url', 'content' => Url::base(true)]);
+Yii::$app->view->registerMetaTag(['property' => 'og:image', 'content' => $metaPhoto]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'title', 'content' => $metaTitle]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'description', 'content' => $metaDescription]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'url', 'content' => Url::base(true)]);
+Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto]);
+
 ?>
 
 <!-- Start Logo -->
-<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/main_photo.jpg');">
-  
+<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/main_photo.jpg');">  
   <img class="main-logo" src="<?=Url::base(true)?>/images/logo_white.png">
   <ul class="menu custom menu-logo">
   <?php foreach($categories as $category): ?>
@@ -99,6 +118,6 @@ use yii\helpers\Url;
 <!-- Start Newsletter Form -->
 <div class="clearfix"></div>
 <div class="row">  
-  <?php $this->beginContent('@app/views/site/partials/_subscribe-banner.php'); ?><?php $this->endContent(); ?>
+  <?php $this->beginContent('@app/views/site/partials/_subscribe-banner.php', ['model' => $newsletter]); ?><?php $this->endContent(); ?>
 </div>
 <!-- End Newsletter Form -->

@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
@@ -13,8 +14,9 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
-    <link rel="stylesheet" href="<?=Url::base(true)?>/css/app.css"><!-- 
-    <link rel="shortcut icon" href="<=Url::base(true)?>/images/logo_black.png" type="img/x-icon" /> -->
+    <title><?= Html::encode($this->title) ?></title>
+    <base href="<?=Url::base(true)?>">
+    <link rel="stylesheet" href="<?=Url::base(true)?>/css/app.css">
     <script src="https://kit.fontawesome.com/deecf005d3.js" crossorigin="anonymous"></script>
     <link rel="canonical" href="<?=Url::base(true)?>" />
 </head>
@@ -26,6 +28,7 @@ AppAsset::register($this);
         <ul class="menu dropdown" data-accordion-menu>
           <li class="nav-btn"><i class="fa fa-bars" data-toggle="offCanvasMenu" aria-hidden="true"></i></li>
           <li class="show-for-medium"><a href="<?=Url::base(true)?>" class="nav-logo"><img src="<?=Url::base(true)?>/images/the_philocalist.png" ></a></li>
+        </ul>
       </div>
       <div class="column large-4 medium-6 show-for-medium">
         <ul class="menu float-right">
@@ -40,12 +43,14 @@ AppAsset::register($this);
             <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i></a></li>
           <?php endif;?>
           <?php endforeach;?>
-          <li><a><i class="fas fa-envelope"></i></a></li>
+          <li><a href="mailto:contact@thephilocalist.gr?subject='Website Contact'"><i class="fas fa-envelope"></i></a></li>
           <li>
-            <button class="button search-button" type="button" data-toggle="example-dropdown-bottom-right1"><i class="fas fa-search"></i></button>
-            <div class="dropdown-pane bottom" data-alignment="right" id="example-dropdown-bottom-right1" data-dropdown>
-              <input type="search" placeholder="Search Article..." data-auto-focus="true">
-            </div>
+            <form class="d-flex" action="<?=Url::base(true)?>/search" method="get">
+              <button class="button search-button" type="button" data-toggle="example-dropdown-bottom-right1"><i class="fas fa-search"></i></button>
+              <div class="dropdown-pane bottom" data-alignment="right" id="example-dropdown-bottom-right1" data-dropdown>
+                <input type="search" name="q" placeholder="Search Article..." data-auto-focus="true">
+              </div>
+            </form>
           </li>
         </ul>
       </div>
@@ -62,19 +67,21 @@ AppAsset::register($this);
             <li class="padding-a find"><p class="m-0 p-l-10">FIND US</u></p></li>
           <?php foreach($this->params['socials'] as $social):?>
           <?php if($social->name == 'facebook'):?>
-            <li><a href="<?=$social->link;?>"><i class="fab fa-facebook-f"></i> <?=strtoupper($social->name);?></a></li>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-facebook-f"></i>&nbsp;&nbsp;<?=strtoupper($social->name);?></a></li>
           <?php elseif($social->name == 'instagram'):?>
-            <li><a href="<?=$social->link;?>"><i class="fab fa-instagram"></i> <?=strtoupper($social->name);?></a></li>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-instagram"></i>&nbsp;&nbsp;<?=strtoupper($social->name);?></a></li>
           <?php elseif($social->name == 'twitter'):?>
-            <li><a href="<?=$social->link;?>"><i class="fab fa-twitter"></i> <?=strtoupper($social->name);?></a></li>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-twitter"></i>&nbsp;&nbsp;<?=strtoupper($social->name);?></a></li>
           <?php else:?>
-            <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i> <?=strtoupper($social->name);?></a></li>
+            <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i>&nbsp;&nbsp;<?=strtoupper($social->name);?></a></li>
           <?php endif;?>
           <?php endforeach;?>
-            <li><a><i class="fas fa-envelope"></i></a></li>
+            <li><a href="mailto:contact@thephilocalist.gr?subject='Website Contact'"><i class="fas fa-envelope"></i>&nbsp;&nbsp;EMAIL</a></li>
             <li class="padding-a d-flex">
-              <button class="button search-button" type="button"><i class="fas fa-search"></i></button>
-              <input type="search" placeholder="Search Article..." data-auto-focus="true">
+              <form class="d-flex" action="<?=Url::base(true)?>/search" method="get">
+                <button class="button search-button" type="button"><i class="fas fa-search"></i></button>
+                <input type="search" name="q" placeholder="Search Article..." data-auto-focus="true">
+              </form>
             </li>
           </ul>
         </div>
@@ -147,7 +154,7 @@ AppAsset::register($this);
             <li><a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i></a></li>
           <?php endif;?>
           <?php endforeach;?>
-            <li><a><i class="fas fa-envelope"></i></a></li>
+            <li><a href="mailto:contact@thephilocalist.gr?subject='Website Contact'"><i class="fas fa-envelope"></i></a></li>
         </ul>  
         </div>
     </div>
