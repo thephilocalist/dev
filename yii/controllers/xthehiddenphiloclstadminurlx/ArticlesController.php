@@ -48,7 +48,6 @@ class ArticlesController extends Controller
 
     public function beforeAction($action)
     {
-        print_r(Yii::$app->user->identity);die;
         if (Yii::$app->user->identity == NULL) {
             $this->layout = 'content';
             return $this->redirect('/Xthehiddenphiloclstadminurlx/login');
