@@ -9,12 +9,12 @@ $this->title = 'The Philocalist';
 ?>
 
 <!-- Start Logo -->
-<div class="main-photo-wrapper" data-src="images/main_photo.jpg" style="background-image: url('images/main_photo.jpg');">
+<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/main_photo.jpg');">
   
-  <img class="main-logo" src="/images/logo_white.png">
+  <img class="main-logo" src="<?=Url::base(true)?>/images/logo_white.png">
   <ul class="menu custom menu-logo">
   <?php foreach($categories as $category): ?>
-    <li><a class="p-l-r-29" href="category/<?=$category->slug?>"><upper><?=strtoupper($category->title)?></upper></a></li>
+    <li><a class="p-l-r-29" href="<?=Url::base(true)?>/category/<?=$category->slug?>"><upper><?=strtoupper($category->title)?></upper></a></li>
   <?php endforeach;?>
   </ul>
 </div>
@@ -28,7 +28,7 @@ $this->title = 'The Philocalist';
   <div class="row">
     <div class="columns small-12 medium-6">
       <div class="spacer-100 hide-for-medium"></div>
-      <img class="about-logo" src="/images/logo_full.png">
+      <img class="about-logo" src="<?=Url::base(true)?>/images/logo_full.png">
     </div>
     <div class="columns small-12 medium-6">
       <h2><?=$welcome->title?></h2>
@@ -54,7 +54,7 @@ $this->title = 'The Philocalist';
   <?php foreach($categories as $category): ?>
   <div class="column">
     <div class="divider">
-      <h3 class="text-center"><a href="category/<?=$category->slug?>"><span>| <?=strtoupper($category->title);?> |</span></a></h3>
+      <h3 class="text-center"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><span>| <?=strtoupper($category->title);?> |</span></a></h3>
     </div>
   </div>
   <div class="clearfix"></div>

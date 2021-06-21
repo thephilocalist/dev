@@ -1,5 +1,10 @@
+<?php
+
+use yii\helpers\Url;
+?>
+
 <div class="main-article">
-    <a href="article/<?=$model->slug;?>" class="h_650 main-article-box" data-src="/images/articles/<?=$model->photo?>.jpg" style="background-image: url('/images/articles/<?=$model->photo?>.jpg');">
+    <a href="<?=Url::base(true)?>/articles/<?=$model->slug;?>" class="h_650 main-article-box" data-src="<?=Url::base(true)?>/images/articles/<?=$model->photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/articles/<?=$model->photo?>.jpg');">
         <div class="text-wrapper">
             <?php foreach($model->categories as $category):?>
                 <p class="category"><?=strtoupper($category->category->title);?></p>

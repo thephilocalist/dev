@@ -566,6 +566,8 @@ footer {
 .article-title-wrapper {
   color: #0a0a0a;
   text-align: center; }
+  a {
+    color: #0a0a0a !important;}
   .article-title-wrapper h1 {
     padding-top: 50px;
     font-size: 72px; }

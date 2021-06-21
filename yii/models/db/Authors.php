@@ -47,7 +47,8 @@ use yii\helpers\BaseHtml;
             'value' => function () {
                 $slugify = new Slugify();
 
-                return  $slugify->slugify($this->title);
+                $this->slug = $slugify->slugify($this->name);
+                return  $slugify->slugify($this->name);
             },
             'ensureUnique' => true,
           ],

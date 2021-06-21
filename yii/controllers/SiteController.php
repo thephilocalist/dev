@@ -21,6 +21,7 @@ use app\models\search\ArticlesSearch;
 use app\models\search\AuthorsSearch;
 use app\models\search\CategoriesSearch;
 use Cocur\Slugify\Slugify;
+use yii\db\Expression;
 
 class SiteController extends Controller
 {
@@ -90,6 +91,48 @@ class SiteController extends Controller
             'welcome' => $welcome,
 
         ]);
+    }
+
+    public function actionCategory($slug)
+    {
+        $category = Categories::find()->where(['enable' => '1'])->andWhere(['slug' => $slug])->one();
+        $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+        
+        return $this->render('category', [
+            'category' => $category,
+            'articles' => $category->articles,
+            'favourite_articles' => $favourite_articles,
+
+        ]);
+
+    }
+
+    public function actionArticles($slug)
+    {
+        $article = Articles::find()->where(['published' => '1'])->andWhere(['slug' => $slug])->one();
+        $article_category = ArticleCategories::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->one();
+        
+        return $this->render('article', [
+            'article' => $article,
+            'reladed_articles' => $article_category->category->articles
+
+        ]);
+
+    }
+
+    public function actionAuthors($slug)
+    {
+        $author = Authors::find()->where(['slug' => $slug])->one();
+        $related_articles = Articles::find()->where(['published' => '1'])->andWhere(['author_id' => $author->id])->orderBy(new Expression('rand()'))->limit(3)->all();
+        $articles = Articles::find()->where(['published' => '1'])->andWhere(['author_id' => $author->id])->orderBy(['published_at' => SORT_DESC])->all();
+        
+        return $this->render('author', [
+            'related_articles' => $related_articles,
+            'author' => $author,
+            'articles' => $articles,
+
+        ]);
+
     }
 
     public function actionSearchArticles($name)

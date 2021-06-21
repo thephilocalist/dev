@@ -14,8 +14,8 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
-    <link rel="stylesheet" href="css/app.css"><!-- 
-    <link rel="shortcut icon" href="<?=Url::base(true)?>/images/logo_black.png" type="img/x-icon" /> -->
+    <link rel="stylesheet" href="<?=Url::base(true)?>/css/app.css"><!-- 
+    <link rel="shortcut icon" href="<=Url::base(true)?>/images/logo_black.png" type="img/x-icon" /> -->
     <script src="https://kit.fontawesome.com/deecf005d3.js" crossorigin="anonymous"></script>
     <link rel="canonical" href="<?=Url::base(true)?>" />
 </head>
@@ -26,7 +26,7 @@ AppAsset::register($this);
       <div class="column large-8 medium-6">
         <ul class="menu dropdown" data-accordion-menu>
           <li class="nav-btn"><i class="fa fa-bars" data-toggle="offCanvasMenu" aria-hidden="true"></i></li>
-          <li class="show-for-medium"><a href="index.html" class="nav-logo"><img src="images/the_philocalist.png" ></a></li>
+          <li class="show-for-medium"><a href="index.html" class="nav-logo"><img src="<?=Url::base(true)?>/images/the_philocalist.png" ></a></li>
       </div>
       <div class="column large-4 medium-6 show-for-medium">
         <ul class="menu float-right">
@@ -45,7 +45,7 @@ AppAsset::register($this);
         <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
           <ul class="vertical dropdown menu accordion-menu" data-accordion-menu>
             <li><span data-toggle="offCanvasMenu" aria-hidden="true">×</span></li>
-            <li class="m-b-10"><a href="index.html"><img class="offcanva-logo" src="images/logo_black.png"></a></li>
+            <li class="m-b-10"><a href="index.html"><img class="offcanva-logo" src="<?=Url::base(true)?>/images/logo_black.png"></a></li>
             <li><a href="index.html">HOME</a></li>
             <li><a href="category.html">FASHION</a></li>
             <li><a href="category.html">LIFESTYLE</a></li>
@@ -70,7 +70,7 @@ AppAsset::register($this);
     <div class="sticky-navigation-bar show-for-medium">
       <ul class="menu">
         <li class=""><a><i class="fa fa-bars f-s-16" data-toggle="offCanvasMenu" aria-hidden="true"></i></a></li>
-        <li class="show-for-medium"><a href="index.html" class="nav-logo"><img class="" src="images/the_philocalist.png" ></a>
+        <li class="show-for-medium"><a href="index.html" class="nav-logo"><img class="" src="<?=Url::base(true)?>/images/the_philocalist.png" ></a>
         <li class="m-l-auto"><a href="category.html">FASHION</a></li>
         <li><a href="category.html">LIFESTYLE</a></li>
         <li><a href="category.html">TRAVEL</a></li>
@@ -98,7 +98,7 @@ AppAsset::register($this);
     <footer>
     <div class="row">
         <div class="column large-4 medium-4 small-12">
-        <a href="index.html"><img class="footer-logo" src="/images/logo_full.png"></a>
+        <a href="index.html"><img class="footer-logo" src="<?=Url::base(true)?>/images/logo_full.png"></a>
         </div>
         <div class="column large-4 medium-4 small-12">
         <ul class="vertical dropdown menu accordion-menu p-inherit" data-accordion-menu>
@@ -131,7 +131,7 @@ AppAsset::register($this);
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/owl.carousel.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="<?=Url::base(true)?>/js/app.js"></script>
 </body>
 </html>
 <?php $this->endPage(); ?>
