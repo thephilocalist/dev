@@ -53,6 +53,7 @@ class ArticlesController extends Controller
             $this->layout = 'content';
             return $this->redirect('/Xthehiddenphiloclstadminurlx/login');
         }
+        $this->layout = 'admin';
         return $action;        
     }
 
@@ -66,8 +67,6 @@ class ArticlesController extends Controller
     }
     public function actionIndex()
     {
-        echo 'actionIndex';die;
-        $this->layout = 'admin';
         $model = new Articles();
         $searchModel = new ArticlesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
