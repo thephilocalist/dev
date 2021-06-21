@@ -65,6 +65,7 @@ class ArticlesController extends Controller
     }
     public function actionIndex()
     {
+        $this->layout = 'admin';
         $model = new Articles();
         $searchModel = new ArticlesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
