@@ -18,10 +18,10 @@
                     ['label' => 'Articles', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/articles/index']],
                     ['label' => 'Categories', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/categories/index']],
                     ['label' => 'Welcome', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/welcome/update']],
-                    ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],/* 
-                    ['label' => 'Newsletter Users', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/newsletter/index']], */
+                    ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],
                     ['label' => 'Authors', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/authors/index']],
                     ['label' => 'Social', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/socials/index']],
+                    ['label' => 'Subscribers', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/newsletter/index']],
                     ['label' => 'Admin Users', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/adminusers/index']],
                     /*
                     [

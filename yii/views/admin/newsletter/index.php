@@ -21,6 +21,7 @@ $this->title = Yii::t('app', 'Subscribers');
       <?=ExportMenu::widget([
         'dropdownOptions' => [
           'label' => 'Export Data', 'class' => 'btn btn-primary',
+          'style' => 'margin-bottom: 20px',
         ],
         'dataProvider' => $dataProvider,
         'fontAwesome' => true,

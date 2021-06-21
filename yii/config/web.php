@@ -11,6 +11,11 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+      'gridview' =>  [
+        'class' => '\kartik\grid\Module'
+      ]
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -125,6 +130,9 @@ $config = [
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/delete', 'route' => '/xthehiddenphiloclstadminurlx/authors/delete', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/authors/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/authors/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
+
+                /* Newsletter */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/newsletter/index', 'route' => '/xthehiddenphiloclstadminurlx/newsletter/index', 'normalizer' => ['collapseSlashes' => false]],
 
             ],
         ],
