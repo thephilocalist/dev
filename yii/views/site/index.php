@@ -6,7 +6,7 @@ use yii\helpers\Url;
 ?>
 
 <!-- Start Logo -->
-<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/main_photo.jpg');">  
+<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/welcome/<?=$welcome->photo?>.jpg');">  
   <img class="main-logo" src="<?=Url::base(true)?>/images/the_philocalist_logo_white.png">
   <ul class="menu custom menu-logo">
   <?php foreach($categories as $category): ?>
