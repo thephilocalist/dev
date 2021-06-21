@@ -183,6 +183,11 @@ class Articles extends \yii\db\ActiveRecord
     {
         return new ArticlesQuery(get_called_class());
     }
+    
+    public static function findCategoryArticles()
+    {
+        return new ArticlesQuery(get_called_class());
+    }
 
     public function beforeSave($record)
     {

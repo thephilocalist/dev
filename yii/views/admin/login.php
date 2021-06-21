@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 ?>
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <h2 class="ui top attached header image"> <img class="lazyload" src="/iconblue2.ico" class="image"> </h2>
+    <h2 class="ui top attached header image"> <img style="margin-left: auto;margin-right: auto;width: 150px;" class="lazyload" src="<?=Url::base(true)?>/images/logo_black.png" class="image"> </h2>
     <div class="ui attached segment">
         <?php $form = ActiveForm::begin([
         'errorSummaryCssClass' => 'alert alert-danger',

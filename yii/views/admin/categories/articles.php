@@ -7,6 +7,7 @@ use yiister\gentelella\widgets\Panel;
 use app\models\db\Authors;
 use yii\helpers\BaseUrl;
 
+$this->title = 'Categories';
 ?>
 
 <div class="row">
@@ -16,10 +17,10 @@ use yii\helpers\BaseUrl;
       <div class="clear-30"></div>
       <?php
       Panel::begin([
-        'header' => Yii::t('app', 'Articles'),
+        'header' => Yii::t('app', $category->title.' Articles'),
       ])?>
-
-      <?= Html::a('Create Article', ['create'], ['class' => 'btn btn-success']);?>
+          <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all Categories', ['/Xthehiddenphiloclstadminurlx/categories/index'], ['class' => 'btn btn-primary'])?>
+            <?= Html::a('Create Article', ['/xthehiddenphiloclstadminurlx/articles/create'], ['class' => 'btn btn-success']);?>
 
       <div class="clear-30"></div>
       <br><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

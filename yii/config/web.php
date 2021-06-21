@@ -113,6 +113,7 @@ $config = [
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/update', 'route' => '/xthehiddenphiloclstadminurlx/categories/update', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/delete', 'route' => '/xthehiddenphiloclstadminurlx/categories/delete', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/photo', 'route' => '/xthehiddenphiloclstadminurlx/categories/photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/articles', 'route' => '/xthehiddenphiloclstadminurlx/categories/articles', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/categories/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/categories/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
 

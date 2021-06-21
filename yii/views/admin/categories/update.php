@@ -6,7 +6,14 @@ $this->title = 'Update Category';
   <div class="row">
 
   <div class="col-md-12">
-    <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all Categories', ['/Xthehiddenphiloclstadminurlx/categories/index'], ['class' => 'btn btn-primary'])?>
+    <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all Categories', ['/Xthehiddenphiloclstadminurlx/categories/index'], ['class' => 'btn btn-primary'])?><br><br><br><br>
+  </div>
+  
+  <div class="col-md-2">
+  <?=Html::a('Create Article', ['/xthehiddenphiloclstadminurlx/articles/create'], ['class' => 'btn btn-success'])?>
+  </div>
+  <div class="col-md-2">
+  <?=Html::a('Category Articles', ['/xthehiddenphiloclstadminurlx/categories/articles?id='.$model->id], ['class' => 'btn btn-success'])?>
   </div>
 
   <div class="spacer-30"></div>

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\db\Categories;
 use app\models\search\CategoriesSearch;
+use app\models\search\CategoryArticlesSearch;
 use app\models\upload\CategoriesPhotosUpload;
 use yii\web\UploadedFile;
 use yii\helpers\BaseHtml;
@@ -124,6 +125,20 @@ class CategoriesController extends Controller
         }
 
         return $this->render('/admin/categories/update', ['model' => $category] );
+    }
+
+    public function actionArticles($id)
+    {
+        $category = Categories::findOne($id);
+        $searchModel = new CategoryArticlesSearch();
+        $dataProvider = $searchModel->articlesSearch(Yii::$app->request->queryParams);
+
+
+        return $this->render('/admin/categories/articles', [
+            'category' => $category,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     public function actionPhoto($id)

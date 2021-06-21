@@ -6,7 +6,7 @@ $this->title = 'Create New Category';
   <div class="row">
 
   <div class="col-md-12">
-    <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all categories', ['/categories/index'], ['class' => 'btn btn-primary'])?>
+    <?=Html::a('<i class="fa fa-caret-left" aria-hidden="true"></i> Back to all categories', ['/Xthehiddenphiloclstadminurlx/categories/index'], ['class' => 'btn btn-primary'])?>
   </div>
 
   <div class="spacer-30"></div>

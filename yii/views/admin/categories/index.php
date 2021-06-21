@@ -46,6 +46,9 @@ $this->title = 'Categories';
                   <div class="product-info">
                       <a class="btn btn-success pull-right margin" role="button" href="/Xthehiddenphiloclstadminurlx/categories/update?id={{category.id}}">Update</a>
                   </div>
+                  <div class="product-info">
+                      <a class="btn btn-primary pull-right margin" role="button" href="/Xthehiddenphiloclstadminurlx/categories/articles?id={{category.id}}">Category Articles</a>
+                  </div>
                 </li>
               </ul>
           </div>
