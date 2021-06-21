@@ -69,7 +69,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 
 <!-- Start Newsletter Form -->
 <div class="clearfix"></div>
-<div class="row">  
-  <?php $this->beginContent('@app/views/site/partials/_subscribe-banner.php'); ?><?php $this->endContent(); ?>
+<div class="row">
+  <?php $this->beginContent('@app/views/site/partials/_subscribe-banner.php', ['model' => $newsletter]); ?><?php $this->endContent(); ?>
 </div>
 <!-- End Newsletter Form -->

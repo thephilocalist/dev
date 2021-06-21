@@ -78,10 +78,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        /* Data for Layout */
-        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
-        $this->view->params['socials'] = Socials::find()->all();
-
         $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
         $welcome = Welcome::find()->one();
         $articles = Articles::find()->where(['published' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
@@ -89,6 +85,17 @@ class SiteController extends Controller
         $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
         $authors = Authors::find()->all();
         $newsletter = new NewsletterForm();
+
+        /* Data for Layout */
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+        $this->view->params['title'] = $welcome->meta_title;
+        $this->view->params['description'] = $welcome->meta_description;
+        $this->view->params['keywords'] = $welcome->meta_keywords;
+        $this->view->params['image'] = $welcome->photo;
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $this->view->params['url'] = $url;
 
         if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -110,16 +117,32 @@ class SiteController extends Controller
 
     public function actionCategory($slug)
     {
-        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
-        $this->view->params['socials'] = Socials::find()->all();
-
         $category = Categories::find()->where(['enable' => '1'])->andWhere(['slug' => $slug])->one();
         $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+
+        /* Data for Layout */
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+        $this->view->params['title'] = $category->meta_title;
+        $this->view->params['description'] = $category->meta_description;
+        $this->view->params['keywords'] = $category->meta_keywords;
+        $this->view->params['image'] = $category->photo;
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $this->view->params['url'] = $url;
+
+        $newsletter = new NewsletterForm();
+        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
         
         return $this->render('category', [
             'category' => $category,
             'articles' => $category->articles,
             'favourite_articles' => $favourite_articles,
+            'newsletter' => $newsletter
 
         ]);
 
@@ -127,15 +150,31 @@ class SiteController extends Controller
 
     public function actionArticle($slug)
     {
-        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
-        $this->view->params['socials'] = Socials::find()->all();
-
         $article = Articles::find()->where(['published' => '1'])->andWhere(['slug' => $slug])->one();
         $article_category = ArticleCategories::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->one();
+
+        /* Data for Layout */
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+        $this->view->params['title'] = $article->meta_title;
+        $this->view->params['description'] = $article->meta_description;
+        $this->view->params['keywords'] = $article->meta_keywords;
+        $this->view->params['image'] = $article->photo;
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $this->view->params['url'] = $url;
+
+        $newsletter = new NewsletterForm();
+        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
         
         return $this->render('article', [
             'article' => $article,
-            'reladed_articles' => $article_category->category->articles
+            'reladed_articles' => $article_category->category->articles,
+            'newsletter' => $newsletter
 
         ]);
 
@@ -143,32 +182,66 @@ class SiteController extends Controller
 
     public function actionAuthor($slug)
     {
-        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
-        $this->view->params['socials'] = Socials::find()->all();
-
         $author = Authors::find()->where(['slug' => $slug])->one();
         $related_articles = Articles::find()->where(['published' => '1'])->andWhere(['author_id' => $author->id])->orderBy(new Expression('rand()'))->limit(3)->all();
         $articles = Articles::find()->where(['published' => '1'])->andWhere(['author_id' => $author->id])->orderBy(['published_at' => SORT_DESC])->all();
+        $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+
+        /* Data for Layout */
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+        $this->view->params['title'] = $author->meta_title;
+        $this->view->params['description'] = $author->meta_description;
+        $this->view->params['keywords'] = $author->meta_keywords;
+        $this->view->params['image'] = $author->photo;
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $this->view->params['url'] = $url;
+
+        $newsletter = new NewsletterForm();
+        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
         
         return $this->render('author', [
             'related_articles' => $related_articles,
             'author' => $author,
             'articles' => $articles,
+            'favourite_articles' => $favourite_articles,
+            'newsletter' => $newsletter
         ]);
 
     }
 
     public function actionAboutUs()
     {
-        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
-        $this->view->params['socials'] = Socials::find()->all();
-
         $about = About::find()->one();
         $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+
+        /* Data for Layout */
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+        $this->view->params['title'] = $about->meta_title;
+        $this->view->params['description'] = $about->meta_description;
+        $this->view->params['keywords'] = $about->meta_keywords;
+        $this->view->params['image'] = $about->photo;
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $this->view->params['url'] = $url;
+
+        $newsletter = new NewsletterForm();
+        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
         
         return $this->render('about', [
             'about' => $about,
             'favourite_articles' => $favourite_articles,
+            'newsletter' => $newsletter
 
         ]);
 
@@ -176,22 +249,37 @@ class SiteController extends Controller
 
     public function actionSearch($q)
     {
-        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
-        $this->view->params['socials'] = Socials::find()->all();
-
         $welcome = Welcome::find()->one();
         $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
         $slugify = new Slugify();
         $term = $slugify->slugify($q);
-        $articles = Articles::find()->
-                                  select(['*'])->
-                                  where(['like', 'slug', $term])->
-                                  all();
+        $articles = Articles::find()->select(['*'])->where(['like', 'slug', $term])->all();
+        $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+
+        /* Data for Layout */
+        $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
+        $this->view->params['socials'] = Socials::find()->all();
+        $this->view->params['title'] = $welcome->meta_title;
+        $this->view->params['description'] = $welcome->meta_description;
+        $this->view->params['keywords'] = $welcome->meta_keywords;
+        $this->view->params['image'] = $welcome->photo;
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $this->view->params['url'] = $url;
+
+        $newsletter = new NewsletterForm();
+        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
 
         return $this->render('search', [
             'articles' => $articles,
             'categories' => $categories,
             'welcome' => $welcome,
+            'favourite_articles' => $favourite_articles,
+            'newsletter' => $newsletter
         ]);
     }
 

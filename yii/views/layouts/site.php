@@ -13,11 +13,27 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
     <base href="<?=Url::base(true)?>">
+    <link rel="shortcut icon" href="<?=Url::base(true)?>/favicon_no_name.ico" type="img/x-icon" />
+
+    <!-- Start Meta -->
+    <title><?= Html::encode($this->params['title'])?></title>
+    <meta name="description" content="<?=$this->params['description']?>">
+    <meta name="keywords" content="<?=$this->params['keywords']?>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<?= Html::encode($this->params['title'])?>">
+    <meta property="og:title" content="<?= Html::encode($this->params['title'])?>">
+    <meta property="og:description" content="<?= Html::encode($this->params['description'])?>">
+    <meta property="og:url" content="<?= Html::encode($this->params['url'])?>">
+    <meta property="og:image" content="<?=Url::base(true)?>/images/<?=$this->params['image']?>.jpg">
+    <meta itemprop="title" content="<?= Html::encode($this->params['title'])?>">
+    <meta itemprop="description" content="<?= Html::encode($this->params['description'])?>">
+    <meta itemprop="image" content="<?= Html::encode($this->params['image'])?>">
+    <meta itemprop="url" content="<?=$this->params['url']?>">
+    <!-- End Meta -->
+
     <link rel="stylesheet" href="<?=Url::base(true)?>/css/app.css">
-    <script src="https://kit.fontawesome.com/deecf005d3.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/deecf005d3.js" crossorigin="anonymous"></script>    
     <link rel="canonical" href="<?=Url::base(true)?>" />
 </head>
 <body>
@@ -27,7 +43,6 @@ AppAsset::register($this);
       <div class="column large-8 medium-6">
         <ul class="menu dropdown" data-accordion-menu>
           <li class="nav-btn"><i class="fa fa-bars" data-toggle="offCanvasMenu" aria-hidden="true"></i></li>
-          <li class="show-for-medium"><a href="<?=Url::base(true)?>" class="nav-logo"><img src="<?=Url::base(true)?>/images/the_philocalist.png" ></a></li>
         </ul>
       </div>
       <div class="column large-4 medium-6 show-for-medium">
@@ -59,7 +74,7 @@ AppAsset::register($this);
         <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
           <ul class="vertical dropdown menu accordion-menu" data-accordion-menu>
             <li><span data-toggle="offCanvasMenu" aria-hidden="true">×</span></li>
-            <li class="m-b-10"><a href="index.html"><img class="offcanva-logo" src="<?=Url::base(true)?>/images/logo_black.png"></a></li>
+            <li class="m-b-10"><a href="<?=Url::base(true)?>"><img class="offcanva-logo" src="<?=Url::base(true)?>/images/logo_black.png"></a></li>
             <li><a href="<?=Url::base(true)?>">HOME</a></li>
             <?php foreach($this->params['categories'] as $category):?>
             <li><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=strtoupper($category->title);?></a></li>
