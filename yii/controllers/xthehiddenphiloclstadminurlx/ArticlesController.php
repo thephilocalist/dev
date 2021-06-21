@@ -49,6 +49,7 @@ class ArticlesController extends Controller
     public function beforeAction($action)
     {
         if (Yii::$app->user->identity == NULL) {
+            echo 'null';die;
             $this->layout = 'content';
             return $this->redirect('/Xthehiddenphiloclstadminurlx/login');
         }
@@ -65,6 +66,7 @@ class ArticlesController extends Controller
     }
     public function actionIndex()
     {
+        echo 'actionIndex';die;
         $this->layout = 'admin';
         $model = new Articles();
         $searchModel = new ArticlesSearch();
