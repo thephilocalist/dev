@@ -92,9 +92,9 @@ use yii\helpers\BaseUrl;
               'template' => '{view} {update} {delete}',
               'buttons' => [
                 'view' => function ($url, $model) {
-                    $url = Url::base(true).'/articles/'.$model->slug;
+                    $url = Url::base(true).'/article/'.$model->slug;
 
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => 'update', 'target' => '_blank']);
+                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => 'view', 'target' => '_blank']);
                 },
                 'update' => function ($url, $model) {
                     $url = Url::to(['Xthehiddenphiloclstadminurlx/articles/update', 'id' => $model->id]);

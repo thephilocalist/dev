@@ -150,7 +150,7 @@ class SiteController extends Controller
 
     public function actionArticle($slug)
     {
-        $article = Articles::find()->where(['published' => '1'])->andWhere(['slug' => $slug])->one();
+        $article = Articles::find()->andWhere(['slug' => $slug])->one();
         $article_category = ArticleCategories::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->one();
 
         /* Data for Layout */

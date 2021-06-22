@@ -33,7 +33,7 @@ responsive:{
         lazyload:true,
         items:1,
         dots:true,
-        nav:true
+        nav:false
     },
     600:{
         lazyload:true,

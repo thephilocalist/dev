@@ -43,6 +43,7 @@ $this->title = 'Authors';
                   </div> -->
                   <div class="product-info">
                       <a class="btn btn-success pull-right margin" role="button" href="/Xthehiddenphiloclstadminurlx/authors/update?id={{author.id}}">Update</a>
+                      <a class="btn btn-primary pull-right margin" role="button" href="/Xthehiddenphiloclstadminurlx/articles/index?ArticlesSearch[author_id]={{author.id}}">Author Articles</a>
                   </div>
                 </li>
               </ul>
