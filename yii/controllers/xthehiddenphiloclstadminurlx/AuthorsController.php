@@ -74,9 +74,6 @@ class AuthorsController extends Controller
                 $model = new Authors();
                 $model->name = Yii::$app->request->post('Authors')['name'];
                 $model->bio = Yii::$app->request->post('Authors')['bio'];
-                $model->meta_title = Yii::$app->request->post('Authors')['meta_title'];
-                $model->meta_description = Yii::$app->request->post('Authors')['meta_description'];
-                $model->meta_keywords = Yii::$app->request->post('Authors')['meta_keywords'];
 
                 if ($model->save()) {
                     return $this->redirect(['update', 'id' => $model->id]);
