@@ -26,8 +26,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 ?>
 
 <!-- Start Logo -->
-<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/main_photo.jpg');">
-  
+<div class="main-photo-wrapper" data-src="<?=Url::base(true)?>/images/main_photo.jpg" style="background-image: url('<?=Url::base(true)?>/images/main_photo.jpg');">  
   <img class="main-logo" src="<?=Url::base(true)?>/images/the_philocalist_logo_white.png">
   <ul class="menu custom menu-logo">
   <?php foreach($categories as $category): ?>
@@ -45,7 +44,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 <div class="columns medium-10 medium-offset-1 small-12" data-equalizer>
   <div class="column">
     <div class="divider">
-      <h3 class="text-center"><span>| SEARCH RESULTS |</span></h3>
+      <h3 class="text-center"><span> SEARCH RESULTS </span></h3>
     </div>
   </div>
   <div class="clearfix"></div>
@@ -78,7 +77,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
     <div class="column">
       <div class="spacer-50"></div>
       <div class="divider">
-        <h3 class="text-center"><span>| FAVOURITE ARTICLES |</span></h3>
+        <h3 class="text-center"><span> FAVOURITE ARTICLES </span></h3>
         <div class="spacer-50"></div>
       </div>
     </div>

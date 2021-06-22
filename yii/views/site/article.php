@@ -54,7 +54,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
     <div class="column">
       <div class="spacer-100"></div>
       <div class="divider">
-        <h3 class="text-center"><span>| RELATED ARTICLES |</span></h3>
+        <h3 class="text-center"><span> RELATED ARTICLES </span></h3>
         <div class="spacer-50"></div>
       </div>
     </div>

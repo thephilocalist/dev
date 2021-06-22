@@ -50,7 +50,7 @@ use yii\helpers\Url;
   <?php foreach($categories as $category): ?>
   <div class="column">
     <div class="divider">
-      <h3 class="text-center"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><span>| <?=strtoupper($category->title);?> |</span></a></h3>
+      <h3 class="text-center"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><span> <?=strtoupper($category->title);?> </span></a></h3>
     </div>
   </div>
   <div class="clearfix"></div>
@@ -79,7 +79,7 @@ use yii\helpers\Url;
   <div class="column">
     <div class="spacer-100"></div>
     <div class="divider">
-      <h3 class="text-center"><span>| FAVOURITE ARTICLES |</span></h3>
+      <h3 class="text-center"><span> FAVOURITE ARTICLES </span></h3>
       <div class="spacer-50"></div>
     </div>
   </div>

@@ -228,8 +228,10 @@ footer {
     background-color: #ecf4ec;
     z-index: 8;
     position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    padding-left: 10px;
+    padding-right: 10px;
     color: #0a0a0a !important; }
   .divider h3 {
     font-size: 20px !important;
@@ -939,8 +941,8 @@ footer {
 /* Large  CSS*/
 @media screen and (min-width: 39.99875em) {
   .p-l-r-29 {
-    padding-left: 29px;
-    padding-right: 29px; } }
+    padding-left: 29px !important;
+    padding-right: 29px !important;} }
 
 /* Very Large  CSS*/
 @media screen and (min-width: 89.99875em) {
