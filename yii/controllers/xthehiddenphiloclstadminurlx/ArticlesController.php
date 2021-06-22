@@ -20,7 +20,7 @@ use yii\web\NotFoundHttpException;
 
 class ArticlesController extends Controller
 {
-    public $layout = '@app/views/layouts/main.php';
+    public $layout = '@app/views/layouts/admin.php';
 
     public function behaviors()
     {
@@ -52,7 +52,6 @@ class ArticlesController extends Controller
             $this->layout = 'content';
             return $this->redirect('/Xthehiddenphiloclstadminurlx/login');
         }
-        $this->layout = 'admin';
         return $action;        
     }
 
@@ -65,8 +64,7 @@ class ArticlesController extends Controller
         ];
     }
     public function actionIndex()
-    {/* 
-        $this->layout = 'main'; */
+    {
         $model = new Articles();
         $searchModel = new ArticlesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -84,7 +82,6 @@ class ArticlesController extends Controller
 
     public function actionCreate()
     {
-        $this->layout = 'admin';
         $model = new Articles();
 
         if (Yii::$app->request->post()) {
