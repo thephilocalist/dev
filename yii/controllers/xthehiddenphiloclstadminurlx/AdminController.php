@@ -51,10 +51,10 @@ class AdminController extends Controller
 
     public function actionLogin()
     {
-        $this->layout = 'admin';
+        $this->layout = 'admin';/* 
         if (!Yii::$app->user->isGuest) {
             $this->redirect(Yii::$app->user->returnUrl);
-        }
+        } */
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $this->redirect('articles/index');
