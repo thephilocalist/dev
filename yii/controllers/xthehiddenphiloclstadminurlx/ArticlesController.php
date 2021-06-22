@@ -20,7 +20,7 @@ use yii\web\NotFoundHttpException;
 
 class ArticlesController extends Controller
 {
-    public $layout = '@app/views/layouts/admin.php';
+    public $layout = '@app/views/layouts/content.php';
 
     public function behaviors()
     {
