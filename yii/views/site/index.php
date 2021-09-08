@@ -29,7 +29,7 @@ use yii\helpers\Url;
     <div class="columns small-12 medium-6">
       <h2><?=$welcome->title?></h2>
       <?=$welcome->text?>
-      <br><a href="<?=Url::base(true)?>/about-us">LEARN MORE</a>
+      <br><a href="<?=Url::base(true)?>/about-us">LEARN MOREs</a>
     </div>
   </div>
 </div>
