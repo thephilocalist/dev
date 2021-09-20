@@ -12,7 +12,7 @@ app.controller('controller', ["$http", "$scope", "$sce", function($http, $scope)
 
     $scope.reInit = function() {
       $http({
-        url: '/Xthehiddenphiloclstadminurlx/socials/rest-sort',
+        url: '/Xthehiddenphiloclstadminurlx/tags/rest-sort',
         method: "GET",
         headers: {
           'Cache-Control': 'no-cache'
@@ -21,7 +21,7 @@ app.controller('controller', ["$http", "$scope", "$sce", function($http, $scope)
           id: $scope.id
         },
       }).success(function(data) {
-        $scope.socials = data.socials;
+        $scope.tags = data.tags;
       });
     }
     $scope.reInit();
@@ -33,7 +33,7 @@ app.controller('controller', ["$http", "$scope", "$sce", function($http, $scope)
         _csrf: yii.getCsrfToken()
       };
       $http({
-        url: '/Xthehiddenphiloclstadminurlx/socials/update',
+        url: '/Xthehiddenphiloclstadminurlx/tags/update',
           method: "POST",
           headers: {
             'Cache-Control': 'no-cache',
@@ -57,7 +57,7 @@ app.controller('controller', ["$http", "$scope", "$sce", function($http, $scope)
         _csrf: yii.getCsrfToken()
       };
       $http({
-        url: '/Xthehiddenphiloclstadminurlx/socials/delete',
+        url: '/Xthehiddenphiloclstadminurlx/tags/delete',
           method: "POST",
           headers: {
             'Cache-Control': 'no-cache',

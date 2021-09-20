@@ -107,9 +107,13 @@ $config = [
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/rest', 'route' => '/xthehiddenphiloclstadminurlx/articles/rest', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/update', 'route' => '/xthehiddenphiloclstadminurlx/articles/update', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/text', 'route' => '/xthehiddenphiloclstadminurlx/articles/text', 'normalizer' => ['collapseSlashes' => false]],
-                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/main-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/main-photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/category-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/category-photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/featured-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/featured-photo', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/delete', 'route' => '/xthehiddenphiloclstadminurlx/articles/delete', 'normalizer' => ['collapseSlashes' => false]],
-                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/upload-main-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/upload-main-photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/upload-featured-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/upload-featured-photo', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/upload-category-photo', 'route' => '/xthehiddenphiloclstadminurlx/articles/upload-category-photo', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/enable', 'route' => '/xthehiddenphiloclstadminurlx/articles/enable', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/articles/disable', 'route' => '/xthehiddenphiloclstadminurlx/articles/disable', 'normalizer' => ['collapseSlashes' => false]],
 
@@ -121,6 +125,13 @@ $config = [
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/articles', 'route' => '/xthehiddenphiloclstadminurlx/categories/articles', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/upload-photo', 'route' => '/xthehiddenphiloclstadminurlx/categories/upload-photo', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/categories/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/categories/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
+
+                /* TAGS */
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/tags/index', 'route' => '/xthehiddenphiloclstadminurlx/tags/index', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/tags/create', 'route' => '/xthehiddenphiloclstadminurlx/tags/create', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/tags/update', 'route' => '/xthehiddenphiloclstadminurlx/tags/update', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/tags/delete', 'route' => '/xthehiddenphiloclstadminurlx/tags/delete', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'Xthehiddenphiloclstadminurlx/tags/rest-sort', 'route' => '/xthehiddenphiloclstadminurlx/tags/rest-sort', 'normalizer' => ['collapseSlashes' => false]],
 
                 /* AUTHORS */
                 ['pattern' => 'Xthehiddenphiloclstadminurlx/authors/index', 'route' => '/xthehiddenphiloclstadminurlx/authors/index', 'normalizer' => ['collapseSlashes' => false]],

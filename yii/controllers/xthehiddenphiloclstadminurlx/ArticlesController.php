@@ -7,7 +7,9 @@ use app\models\db\Authors;
 use app\models\db\Articles;
 use app\models\db\Categories;
 use app\models\db\ArticleCategories;
-use app\models\upload\ArticlesPhotosUpload;
+use app\models\upload\ArticlesMainPhotoUpload;
+use app\models\upload\ArticlesCategoryPhotoUpload;
+use app\models\upload\ArticlesFeaturedPhotoUpload;
 use app\models\search\AuthorsSearch;
 use app\models\search\ArticlesSearch;
 use app\models\search\CategoriesSearch;
@@ -218,30 +220,100 @@ class ArticlesController extends Controller
 
     }
 
-    public function actionPhoto()
+    public function actionMainPhoto()
     {
         $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
 
-        return $this->render('/admin/articles/photo', [
+        return $this->render('/admin/articles/main-photo', [
             'article' => $model,
             ]);
 
     }
 
-    public function actionUploadPhoto($id)
+    public function actionFeaturedPhoto()
     {
         $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
-        $photo = new ArticlesPhotosUpload();
+
+        return $this->render('/admin/articles/featured-photo', [
+            'article' => $model,
+            ]);
+
+    }
+
+    public function actionCategoryPhoto()
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+
+        return $this->render('/admin/articles/category-photo', [
+            'article' => $model,
+            ]);
+
+    }
+
+    public function actionUploadMainPhoto($id)
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $photo = new ArticlesMainPhotoUpload();
         $photo->imageFile = UploadedFile::getInstanceByName('imageFile');
-        $photo->photo = \Yii::$app->security->generateRandomString();
+        $photo->main_photo = \Yii::$app->security->generateRandomString();
 
         if ($photo->upload($id)) {
 
-            $model->photo = $photo->photo;
+            $model->photo = $photo->main_photo;
 
             if ($model->save()) {     
 
-                $this->redirect(['photo', 'id' => $id]);
+                $this->redirect(['main-photo', 'id' => $id]);
+
+            } else {
+
+                return false;
+            }
+
+        } else {
+            return ["error" => $photo->getErrors('imageFile')];
+        }
+    }
+
+    public function actionUploadFeaturedPhoto($id)
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $photo = new ArticlesFeaturedPhotoUpload();
+        $photo->imageFile = UploadedFile::getInstanceByName('imageFile');
+        $photo->featured_photo = \Yii::$app->security->generateRandomString();
+
+        if ($photo->upload($id)) {
+
+            $model->photo = $photo->featured_photo;
+
+            if ($model->save()) {     
+
+                $this->redirect(['featured-photo', 'id' => $id]);
+
+            } else {
+
+                return false;
+            }
+
+        } else {
+            return ["error" => $photo->getErrors('imageFile')];
+        }
+    }
+
+    public function actionUploadCategoryPhoto($id)
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $photo = new ArticlesCategoryPhotoUpload();
+        $photo->imageFile = UploadedFile::getInstanceByName('imageFile');
+        $photo->category_photo = \Yii::$app->security->generateRandomString();
+
+        if ($photo->upload($id)) {
+
+            $model->photo = $photo->category_photo;
+
+            if ($model->save()) {     
+
+                $this->redirect(['category-photo', 'id' => $id]);
 
             } else {
 

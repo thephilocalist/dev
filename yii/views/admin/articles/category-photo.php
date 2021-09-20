@@ -26,7 +26,7 @@ $this->title = ucfirst($type); */
 </div>
 <div class="spacer-30"></div>
 
-<?php $this->beginContent('@app/views/admin/articles/articlesmenu.php', ['active' => 'photo', 'id' => $article->id]); ?>
+<?php $this->beginContent('@app/views/admin/articles/articlesmenu.php', ['active' => 'category-photo', 'id' => $article->id]); ?>
 <?php $this->endContent(); ?>
 <div class="spacer-30"></div>
 <div class="clearfix"></div>
@@ -41,7 +41,7 @@ $this->title = ucfirst($type); */
           'multiple'=> false
         ],
         'pluginOptions' => [
-            'uploadUrl' => Url::to(['/Xthehiddenphiloclstadminurlx/articles/upload-photo', 'id' => $article->id]),
+            'uploadUrl' => Url::to(['/Xthehiddenphiloclstadminurlx/articles/upload-category-photo', 'id' => $article->id]),
             'showPreview' => true,
             'showCaption' => true,
             'showRemove' => false,

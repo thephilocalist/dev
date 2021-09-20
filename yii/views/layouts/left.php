@@ -17,6 +17,7 @@
                     ], */
                     ['label' => 'Articles', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/articles/index']],
                     ['label' => 'Categories', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/categories/index']],
+                    ['label' => 'Tags', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/tags/index']],
                     ['label' => 'Welcome', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/welcome/update']],
                     ['label' => 'About Us', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/about/update']],
                     ['label' => 'Authors', 'icon' => 'circle', 'url' => ['/Xthehiddenphiloclstadminurlx/authors/index']],

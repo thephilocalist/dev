@@ -15,8 +15,7 @@ use Cocur\Slugify\Slugify;
  * @property int $id
  * @property int $author_id
  * @property int $published
- * @property int $main
- * @property int $favourite
+ * @property int $featured
  * @property string $title
  * @property string $slug
  * @property string $subtitle
@@ -24,7 +23,9 @@ use Cocur\Slugify\Slugify;
  * @property string $meta_title
  * @property string $meta_description
  * @property string $meta_keywords
- * @property string $photo
+ * @property string $main_photo
+ * @property string $featured_photo
+ * @property string $category_photo
  * @property int $publish_at
  * @property int $published_at
  * @property int $updated_at
@@ -57,9 +58,9 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             [['author_id', 'title'], 'required'],
-            [['author_id', 'published_at', 'updated_at', 'created_at', 'publish_at', 'main', 'favourite', 'published'], 'integer'],
-            [['text', 'meta_keywords', 'photo'], 'string'],
-            [['title', 'photo'], 'string', 'max' => 255],
+            [['author_id', 'published_at', 'updated_at', 'created_at', 'publish_at', 'featured', 'published'], 'integer'],
+            [['text', 'meta_keywords', 'main_photo', 'featured_photo', 'category_photo'], 'string'],
+            [['title', 'main_photo', 'featured_photo', 'category_photo'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 300],
             [['meta_title'], 'string', 'max' => 70],
             [['meta_description'], 'string', 'max' => 160],
@@ -92,11 +93,12 @@ class Articles extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'author_id' => Yii::t('app', 'Author'),
             'published' => Yii::t('app', 'Published'),
-            'main' => Yii::t('app', 'Main'),
-            'favourite' => Yii::t('app', 'Favourite'),
+            'featured' => Yii::t('app', 'Featured'),
             'title' => Yii::t('app', 'Title'),
             'slug' => Yii::t('app', 'Slug'),
-            'photo' => Yii::t('app', 'Photo'),
+            'main_photo' => Yii::t('app', 'Main Photo'),
+            'featured_photo' => Yii::t('app', 'Featured Photo'),
+            'category_photo' => Yii::t('app', 'Category Photo'),
             'text' => Yii::t('app', 'Text'),
             'meta_title' => Yii::t('app', 'Meta Title'),
             'meta_description' => Yii::t('app', 'Meta Description'),

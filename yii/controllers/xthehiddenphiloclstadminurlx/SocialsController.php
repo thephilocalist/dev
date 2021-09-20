@@ -107,6 +107,18 @@ class SocialsController extends Controller
         }
     }
 
+    public function actionDelete()
+    {
+        if (Yii::$app->request->post()) {
+            $social = Socials::findOne(Yii::$app->request->post('id'));
+
+            $social->delete();
+            
+            return $this->redirect('index');
+        }
+
+    }
+
     public function actionRestSort()
     {
         if (Yii::$app->request->isGet) {
