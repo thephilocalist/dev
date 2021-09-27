@@ -34,14 +34,16 @@ use Cocur\Slugify\Slugify;
  * @property authors $authors
  * @property categories[] $categories
  * @property Categories $categories
+ * @property tags[] $tags
+ * @property Tags $tags
  */
 class Articles extends \yii\db\ActiveRecord
 {
-    public $Categories, $dirtyCategoryId;
+    public $Categories, $dirtyCategoryId, $Tags;
 
     public function fields()
     {
-        return array_merge($this->attributes(), ['categories']);
+        return array_merge($this->attributes(), ['categories', 'tags']);
     }
     /**
      * {@inheritdoc}
@@ -58,7 +60,7 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             [['author_id', 'title'], 'required'],
-            [['author_id', 'published_at', 'updated_at', 'created_at', 'publish_at', 'featured', 'published'], 'integer'],
+            [['author_id', 'published_at', 'updated_at', 'created_at', 'featured', 'published'], 'integer'],
             [['text', 'meta_keywords', 'main_photo', 'featured_photo', 'category_photo'], 'string'],
             [['title', 'main_photo', 'featured_photo', 'category_photo'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 300],
@@ -109,6 +111,7 @@ class Articles extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated' => Yii::t('app', 'Updated'),
             'Categories' => Yii::t('app', ' '),
+            'Tags' => Yii::t('app', ' '),
         ];
     }
 
@@ -134,6 +137,14 @@ class Articles extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(ArticleCategories::className(), ['article_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTag()
+    {
+        return $this->hasOne(ArticleTags::className(), ['article_id' => 'id']);
     }
 
     /**

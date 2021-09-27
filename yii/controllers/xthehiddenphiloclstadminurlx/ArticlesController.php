@@ -6,7 +6,9 @@ use Yii;
 use app\models\db\Authors;
 use app\models\db\Articles;
 use app\models\db\Categories;
+use app\models\db\Tags;
 use app\models\db\ArticleCategories;
+use app\models\db\ArticleTags;
 use app\models\upload\ArticlesMainPhotoUpload;
 use app\models\upload\ArticlesCategoryPhotoUpload;
 use app\models\upload\ArticlesFeaturedPhotoUpload;
@@ -108,16 +110,20 @@ class ArticlesController extends Controller
     {
         if (Yii:: $app->request->post()) {
             $categories = Categories::find()->all();
+            $tags = Tags::find()->all();
             $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
             $this_article_categories = ArticleCategories::find()->where(['article_id' => $model->id])->all();
+            $this_article_tags = ArticleTags::find()->where(['article_id' => $model->id])->all();
+            $timestamp = strtotime(Yii::$app->request->post('Articles')['publish_at']);
             
             $model->author_id = Yii::$app->request->post('Articles')['author_id'];
             $model->meta_title = Yii::$app->request->post('Articles')['meta_title'];
             $model->published = Yii::$app->request->post('Articles')['published'];
-            $model->main = Yii::$app->request->post('Articles')['main'];
-            $model->favourite = Yii::$app->request->post('Articles')['favourite'];
+            $model->featured = Yii::$app->request->post('Articles')['featured'];/*
+            $model->favourite = Yii::$app->request->post('Articles')['favourite']; */
             $model->meta_description = Yii::$app->request->post('Articles')['meta_description'];
             $model->meta_keywords = Yii::$app->request->post('Articles')['meta_keywords'];
+            $model->publish_at = $timestamp;
 
             foreach($categories as $category) {
                 if ($this_article_categories) {
@@ -147,6 +153,38 @@ class ArticlesController extends Controller
                         $artcle_category->article_id = $model->id;
                         $artcle_category->category_id = $category->id;
                         $artcle_category->save();
+                    }
+                }
+            }
+
+            foreach($tags as $tag) {
+                if ($this_article_tags) {
+                    foreach($this_article_tags as $this_article_tag) {
+                        if ($this_article_tag->tag_id == $tag->id) {
+                            if( Yii::$app->request->post()[$tag->id] == 0){
+                                $artcle_tag = ArticleTags::find()->where(['article_id' => $model->id])->andWhere(['tag_id' => $tag->id])->one();
+                                $artcle_tag->delete();               
+                            }
+                        } else {
+                            if( Yii::$app->request->post()[$tag->id] == 1){
+                                $artcle_tag = ArticleTags::find()->where(['article_id' => $model->id])->andWhere(['tag_id' => $tag->id])->one();
+
+                                if($artcle_tag) {
+                                } else {
+                                    $artcle_tag = new ArticleTags();
+                                    $artcle_tag->article_id = $model->id;
+                                    $artcle_tag->tag_id = $tag->id;
+                                    $artcle_tag->save();
+                                }
+                            }    
+                        }
+                    }
+                } else {
+                    if(Yii::$app->request->post()[$tag->id] == 1){
+                        $artcle_tag = new ArticleTags();
+                        $artcle_tag->article_id = $model->id;
+                        $artcle_tag->tag_id = $tag->id;
+                        $artcle_tag->save();
                     }
                 }
             }

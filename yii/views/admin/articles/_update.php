@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\models\db\Articles;
 use app\models\db\Authors;
 use app\models\db\Categories;
+use app\models\db\Tags;
 use app\models\db\ArticleCategories;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -14,9 +15,15 @@ $authors = Authors::find()->asArray()->all();
 $categories = Categories::find()->asArray()->all();
 $article_categories = $model->getCategory()->all();
 $artcl_categories = [];
+$tags = Tags::find()->asArray()->all();
+$article_tags = $model->getTag()->all();
+$artcl_tags = [];
 
 foreach ($article_categories as $article_category) {
     array_push($artcl_categories, $article_category['category_id']);
+}
+foreach ($article_tags as $article_tag) {
+    array_push($artcl_tags, $article_tag['tag_id']);
 }/* 
 print_r($categories);
 print_r($artcl_categories); die; */
@@ -29,30 +36,48 @@ print_r($artcl_categories); die; */
   <= $form->field($model, 'title')->textInput()->label('Title');?>
   </div> -->
   <div class="row">
-    <div class=col-lg-2>
+    <div class=col-lg-3>
             <?= $form->field($model, 'published')->widget(SwitchInput::classname(),[
                 'type' => SwitchInput::CHECKBOX
             ])->label('Published');?>
     </div>
-    <div class=col-lg-2>
-            <?= $form->field($model, 'main')->widget(SwitchInput::classname(),[
+    <div class=col-lg-3>
+            <?= $form->field($model, 'featured')->widget(SwitchInput::classname(),[
                 'type' => SwitchInput::CHECKBOX
-            ])->label('Main');?>
+            ])->label('Featured');?>
     </div>
-    <div class=col-lg-2>
-            <?= $form->field($model, 'favourite')->widget(SwitchInput::classname(),[
-                'type' => SwitchInput::CHECKBOX
-            ])->label('Favourite');?>
+    <div class=col-lg-3>
+            <?= $form->field($model, 'publish_at')->widget(\yii\jui\DatePicker::className(),[
+            ])->label('Publish at');?>
     </div>
   </div>
-  <div class="row">
+  <div class="row"><br>
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <p><b>Choose Categories:</b></p>
+        </div>
     <?php foreach($categories as $category):?>
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <?php if(in_array($category['id'], $artcl_categories)):?>
                 <?= $form->field($model, 'Categories')->checkbox(['name' => $category['id'], 'checked' => true])->label($category['title']); ?>
             <?php else:?>
                 <?= $form->field($model, 'Categories')->checkbox([ 'name' => $category['id'], 'checked' => false])->label($category['title']); ?>
+            <?php endif;?>
+        </div>
+    <?php endforeach;?>
+    </div>
+  </div>
+  <div class="row"><br>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <p><b>Choose Tags:</b></p>
+        </div>
+    <?php foreach($tags as $tag):?>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <?php if(in_array($tag['id'], $artcl_tags)):?>
+                <?= $form->field($model, 'Tags')->checkbox(['name' => $tag['id'], 'checked' => true])->label($tag['title']); ?>
+            <?php else:?>
+                <?= $form->field($model, 'Tags')->checkbox([ 'name' => $tag['id'], 'checked' => false])->label($tag['title']); ?>
             <?php endif;?>
         </div>
     <?php endforeach;?>
