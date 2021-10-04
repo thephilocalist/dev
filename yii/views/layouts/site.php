@@ -15,7 +15,7 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="<?=Url::base(true)?>">
-    <link rel="shortcut icon" href="<?=Url::base(true)?>/favicon_no_name.ico" type="img/x-icon" />
+    <link rel="shortcut icon" href="<?=Url::base(true)?>/images/favicon.ico" type="img/x-icon" />
 
     <!-- Start Meta -->
     <title><?= Html::encode($this->params['title'])?></title>
