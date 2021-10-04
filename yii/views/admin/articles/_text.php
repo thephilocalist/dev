@@ -47,6 +47,9 @@ JS
   <div class="col-md-6">
   <?= $form->field($model, 'title')->textInput()->label('Title');?>
   </div>
+  <div class="col-md-6">
+  <?= $form->field($model, 'subtitle')->textInput()->label('Subtitle');?>
+  </div>
   <div class="col-md-12">
   <?= $form->field($model, 'text')->label('Text')->textarea(['class' => 'rich', 'id' => 'characteristics_text', 'rows' => 10]) ?><br> 
   </div>

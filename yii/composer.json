@@ -32,7 +32,9 @@
         "kartik-v/yii2-widget-switchinput": "*",
         "yiister/yii2-gentelella": "~1.0",
         "himiklab/yii2-recaptcha-widget": "*",
-        "kartik-v/yii2-grid": "@dev"
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-widget-datetimepicker": "*",
+        "2amigos/yii2-date-time-picker-widget" : "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -54,7 +56,8 @@
         "yiisoft/yii2-httpclient": "^2.0",
         "kartik-v/yii2-export": "dev-master",
         "yiister/yii2-gentelella": "~1.0",
-        "kartik-v/yii2-grid": "@dev"
+        "kartik-v/yii2-grid": "@dev",
+        "2amigos/yii2-date-time-picker-widget" : "*"
     },
     "config": {
         "process-timeout": 1800,

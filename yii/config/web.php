@@ -62,7 +62,7 @@ $config = [
                 ['pattern' => 'article/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/article', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'author/<slug:[A-Za-z0-9_-]+>', 'route' => 'site/author', 'normalizer' => ['collapseSlashes' => false]],
                 ['pattern' => 'search', 'route' => 'site/search', 'normalizer' => ['collapseSlashes' => false]],
-                ['pattern' => 'about-us', 'route' => 'site/about-us', 'normalizer' => ['collapseSlashes' => false]],
+                ['pattern' => 'about', 'route' => 'site/about-us', 'normalizer' => ['collapseSlashes' => false]],
 
 
 

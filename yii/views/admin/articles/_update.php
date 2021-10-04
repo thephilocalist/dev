@@ -9,25 +9,29 @@ use app\models\db\ArticleCategories;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\switchinput\SwitchInput;
-
+use kartik\datetime\DateTimePicker;
 
 $authors = Authors::find()->asArray()->all();
 $categories = Categories::find()->asArray()->all();
+$categorieslist = Categories::find()->select(['title', 'id'])->indexBy('id')->column();
 $article_categories = $model->getCategory()->all();
 $artcl_categories = [];
 $tags = Tags::find()->asArray()->all();
 $article_tags = $model->getTag()->all();
 $artcl_tags = [];
+if($model->publish_at){
+    $model->publish_at = date('M d, Y H:i:s', $model->publish_at);
+}
 
 foreach ($article_categories as $article_category) {
     array_push($artcl_categories, $article_category['category_id']);
 }
 foreach ($article_tags as $article_tag) {
     array_push($artcl_tags, $article_tag['tag_id']);
-}/* 
-print_r($categories);
-print_r($artcl_categories); die; */
+}
+
 ?>
+
 <div class="box-body">
   <?php $form = ActiveForm::begin(); ?>
   <?= $form->field($model, 'id')->label(false)->textInput(['class' => 'hide']);?>
@@ -46,8 +50,8 @@ print_r($artcl_categories); die; */
                 'type' => SwitchInput::CHECKBOX
             ])->label('Featured');?>
     </div>
-    <div class=col-lg-3>
-            <?= $form->field($model, 'publish_at')->widget(\yii\jui\DatePicker::className(),[
+    <div class=col-lg-4>
+            <?= $form->field($model, 'publish_at')->widget(DateTimePicker::className(),[
             ])->label('Publish at');?>
     </div>
   </div>
@@ -59,9 +63,9 @@ print_r($artcl_categories); die; */
     <?php foreach($categories as $category):?>
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <?php if(in_array($category['id'], $artcl_categories)):?>
-                <?= $form->field($model, 'Categories')->checkbox(['name' => $category['id'], 'checked' => true])->label($category['title']); ?>
+                <?= $form->field($model, 'Categories')->checkbox(['name' => $category['title'], 'checked' => true])->label($category['title']); ?>
             <?php else:?>
-                <?= $form->field($model, 'Categories')->checkbox([ 'name' => $category['id'], 'checked' => false])->label($category['title']); ?>
+                <?= $form->field($model, 'Categories')->checkbox([ 'name' => $category['title'], 'checked' => false])->label($category['title']); ?>
             <?php endif;?>
         </div>
     <?php endforeach;?>
@@ -75,9 +79,9 @@ print_r($artcl_categories); die; */
     <?php foreach($tags as $tag):?>
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <?php if(in_array($tag['id'], $artcl_tags)):?>
-                <?= $form->field($model, 'Tags')->checkbox(['name' => $tag['id'], 'checked' => true])->label($tag['title']); ?>
+                <?= $form->field($model, 'Tags')->checkbox(['name' => $tag['title'], 'checked' => true])->label($tag['title']); ?>
             <?php else:?>
-                <?= $form->field($model, 'Tags')->checkbox([ 'name' => $tag['id'], 'checked' => false])->label($tag['title']); ?>
+                <?= $form->field($model, 'Tags')->checkbox([ 'name' => $tag['title'], 'checked' => false])->label($tag['title']); ?>
             <?php endif;?>
         </div>
     <?php endforeach;?>

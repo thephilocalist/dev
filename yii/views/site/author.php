@@ -24,23 +24,27 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 
 ?>
 
-<!-- Start Logo -->
-<div class="category-photo-wrapper" data-src="<?=Url::base(true)?>/images/authors/<?=$author->photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/authors/<?=$author->photo?>.jpg');">
-  <img class="main-logo" src="<?=Url::base(true)?>/images/the_philocalist_logo_white.png">
-    <h1><?=strtoupper($author->name);?></h1>
+<!-- Start Name -->
+<div class="columns medium-12 small-12" data-equalizer>
+  <div class="column">
+    <h1 class="about-title"><a href="<?=Url::base(true)?>/author/<?=$author->slug?>"><?=$author->name?></a></h1>
+  </div>
 </div>
-<div class="clearfix"></div>
-<div class="spacer-600"></div>
-<div class="clearfix"></div>
-<!-- End Logo -->
-
-<!-- Start Text -->
+<!-- End Name -->
+<!-- Start author-image -->
 <div class="row">
-    <div class="columns large-offset-2 large-8 medium-6 medium-offset-3 small-10 small-offset-1">
-        <div class="spacer-50"></div>
-        <?=$author->bio;?>
+  <div class="columns">
+    <img class="article-image" src="<?=Url::base(true)?>/images/authors/<?=$author->photo?>.jpg">
+  </div>
+</div>
+<!-- End author-image -->
+<!-- Start Text -->
+<div class="row"> 
+    <div class="columns large-offset-2 large-8 medium-10 medium-offset-1 small-10 small-offset-1">
+        <p class="about-text"><?=$author->bio;?></p>
     </div>
 </div>
+<div class="spacer-100"></div>
 <!-- End Text -->
 
 <!-- Start - Author - Articles -->
@@ -48,8 +52,8 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 <div class="columns medium-10 medium-offset-1 small-12" data-equalizer>
   <div class="small-up-1 medium-up-2 large-up-3">
     <?php foreach($articles as $article):?>
-      <div class="column category-load-1">
-        <?php $this->beginContent('@app/views/site/partials/_medium-article.php', ['model' => $article]); ?><?php $this->endContent(); ?>
+      <div class="column load-6">
+        <?php $this->beginContent('@app/views/site/partials/_medium-category-article.php', ['model' => $article]); ?><?php $this->endContent(); ?>
         <div class="clearfix"></div>
         <div class="spacer-50"></div>
       </div>
@@ -57,35 +61,10 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
   </div>
   <div class="clearfix"></div>
   <div class="spacer-10"></div>
-  <a class="load_more" id="load-1">LOAD MORE</a>
+    <a class="load_more" id="load-3">Περισσότερα άρθρα&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right"></i></a>
   <div class="clearfix"></div>
   <div class="spacer-100"></div>
 </div>
 <!-- End - Author - Articles -->
-
-<!-- Start Promoted Articles -->
-<div class="latest-articles-container">
-    <div class="column">
-      <div class="spacer-50"></div>
-      <div class="divider">
-        <h3 class="text-center"><span> FAVOURITE ARTICLES </span></h3>
-        <div class="spacer-50"></div>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <?php foreach($favourite_articles as $article):?>
-    <div class="columns large-4 large-offset-0 medium-offset-0 small-10 small-offset-1 medium-6">
-        <?php $this->beginContent('@app/views/site/partials/_small-article.php', ['model' => $article]); ?><?php $this->endContent(); ?>
-        <div class="clearfix"></div>
-        <div class="spacer-50"></div>
-    </div>
-    <?php endforeach;?>
-</div>
-<!-- End Promoted Articles -->
-
-<!-- Start Newsletter Form -->
-<div class="clearfix"></div>
-<div class="row">
-  <?php $this->beginContent('@app/views/site/partials/_subscribe-banner.php', ['model' => $newsletter]); ?><?php $this->endContent(); ?>
-</div>
-<!-- End Newsletter Form -->
+<a href="<?=Url::base(true)?>"><img class="about-logo" src="<?=Url::base(true)?>/images/Logo_Icon.png"></a>
+<div class="spacer-100"></div>

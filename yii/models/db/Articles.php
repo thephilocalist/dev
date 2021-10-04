@@ -42,8 +42,8 @@ class Articles extends \yii\db\ActiveRecord
     public $Categories, $dirtyCategoryId, $Tags;
 
     public function fields()
-    {
-        return array_merge($this->attributes(), ['categories', 'tags']);
+    {/* 
+        return array_merge($this->attributes(), ['categories', 'tags']); */
     }
     /**
      * {@inheritdoc}
@@ -59,10 +59,10 @@ class Articles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['author_id', 'title'], 'required'],
+            [['author_id', 'title', 'subtitle'], 'required'],
             [['author_id', 'published_at', 'updated_at', 'created_at', 'featured', 'published'], 'integer'],
             [['text', 'meta_keywords', 'main_photo', 'featured_photo', 'category_photo'], 'string'],
-            [['title', 'main_photo', 'featured_photo', 'category_photo'], 'string', 'max' => 255],
+            [['title', 'subtitle', 'main_photo', 'featured_photo', 'category_photo'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 300],
             [['meta_title'], 'string', 'max' => 70],
             [['meta_description'], 'string', 'max' => 160],
@@ -97,6 +97,7 @@ class Articles extends \yii\db\ActiveRecord
             'published' => Yii::t('app', 'Published'),
             'featured' => Yii::t('app', 'Featured'),
             'title' => Yii::t('app', 'Title'),
+            'subtitle' => Yii::t('app', 'Subitle'),
             'slug' => Yii::t('app', 'Slug'),
             'main_photo' => Yii::t('app', 'Main Photo'),
             'featured_photo' => Yii::t('app', 'Featured Photo'),
@@ -111,7 +112,9 @@ class Articles extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated' => Yii::t('app', 'Updated'),
             'Categories' => Yii::t('app', ' '),
+            'categories' => Yii::t('app', ' '),
             'Tags' => Yii::t('app', ' '),
+            'tags' => Yii::t('app', ' '),
         ];
     }
 
@@ -137,6 +140,14 @@ class Articles extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(ArticleCategories::className(), ['article_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTags()
+    {
+        return $this->hasMany(ArticleTags::className(), ['article_id' => 'id']);
     }
 
     /**
@@ -228,10 +239,10 @@ class Articles extends \yii\db\ActiveRecord
                     $def->addElement('iframe', 'Block', 'Flow', 'Common', array());
                 }
             });
-
+/* 
             if ($this->isAttributeChanged('published', false) && $this->published == 1) {
                 $this->touch('published_at');
-            }
+            } */
 
             if ($this->isAttributeChanged('category_id', false)) {
                 $this->dirtyCategoryId = 1;

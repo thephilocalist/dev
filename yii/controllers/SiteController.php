@@ -19,6 +19,7 @@ use app\models\db\About;
 use app\models\db\Welcome;
 use app\models\db\Socials;
 use app\models\db\ArticleCategories;
+use app\models\db\ArticleTags;
 use app\models\db\ArticleCategoriesQuery;
 use app\models\search\ArticlesSearch;
 use app\models\search\AuthorsSearch;
@@ -81,11 +82,9 @@ class SiteController extends Controller
         $categories = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_DESC])->all();
         $welcome = Welcome::find()->one();
         $articles = Articles::find()->where(['published' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
-        $main_articles = Articles::find()->where(['published' => '1'])->andWhere(['main' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
-        $favourite_articles = Articles::find()->where(['published' => '1'])->andWhere(['favourite' => '1'])->orderBy(['published_at' => SORT_DESC])->limit('3')->all();
+        $featured_articles = Articles::find()->where(['published' => '1'])->andWhere(['featured' => '1'])->orderBy(['published_at' => SORT_DESC])->all();
         $authors = Authors::find()->all();
-        $newsletter = new NewsletterForm();
-
+        
         /* Data for Layout */
         $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
         $this->view->params['socials'] = Socials::find()->all();
@@ -96,18 +95,18 @@ class SiteController extends Controller
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $this->view->params['url'] = $url;
+        $newsletter = new NewsletterForm();
+        $this->view->params['newsletter'] = $newsletter;
 
-        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
+        if ($this->view->params['newsletter']->load(Yii::$app->request->post()) && $this->view->params['newsletter']->submit()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
 
         return $this->render('index', [
             'categories' => $categories,
             'articles' => $articles,
-            'main_articles' => $main_articles,
-            'favourite_articles' => $favourite_articles,
+            'featured_articles' => $featured_articles,
             'authors' => $authors,
             'welcome' => $welcome,
             'newsletter' => $newsletter
@@ -130,11 +129,11 @@ class SiteController extends Controller
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $this->view->params['url'] = $url;
-
         $newsletter = new NewsletterForm();
-        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $this->view->params['newsletter'] = $newsletter;
 
+        if ($this->view->params['newsletter']->load(Yii::$app->request->post()) && $this->view->params['newsletter']->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
         
@@ -152,7 +151,8 @@ class SiteController extends Controller
     {
         $article = Articles::find()->andWhere(['slug' => $slug])->one();
         $article_category = ArticleCategories::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->one();
-
+        $article_tags = ArticleTags::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->all();
+        
         /* Data for Layout */
         $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
         $this->view->params['socials'] = Socials::find()->all();
@@ -163,18 +163,24 @@ class SiteController extends Controller
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $this->view->params['url'] = $url;
-
         $newsletter = new NewsletterForm();
-        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $this->view->params['newsletter'] = $newsletter;
 
+        $total_word = str_word_count(strip_tags($article->text));
+        $m = floor($total_word / 230);
+        $s = floor($total_word % 230 / (230 / 60));
+        $estimateTime = $m . ' minute' . ($m == 1 ? '' : 's');
+
+        if ($this->view->params['newsletter']->load(Yii::$app->request->post()) && $this->view->params['newsletter']->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
-        
         return $this->render('article', [
             'article' => $article,
             'reladed_articles' => $article_category->category->articles,
-            'newsletter' => $newsletter
+            'newsletter' => $newsletter,
+            'estimateTime' => $estimateTime,
+            'article_tags' => $article_tags
 
         ]);
 
@@ -197,11 +203,11 @@ class SiteController extends Controller
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $this->view->params['url'] = $url;
-
         $newsletter = new NewsletterForm();
-        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $this->view->params['newsletter'] = $newsletter;
 
+        if ($this->view->params['newsletter']->load(Yii::$app->request->post()) && $this->view->params['newsletter']->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
         
@@ -230,11 +236,11 @@ class SiteController extends Controller
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $this->view->params['url'] = $url;
-
         $newsletter = new NewsletterForm();
-        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $this->view->params['newsletter'] = $newsletter;
 
+        if ($this->view->params['newsletter']->load(Yii::$app->request->post()) && $this->view->params['newsletter']->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
         
@@ -266,11 +272,11 @@ class SiteController extends Controller
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $this->view->params['url'] = $url;
-
         $newsletter = new NewsletterForm();
-        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->submit()) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $this->view->params['newsletter'] = $newsletter;
 
+        if ($this->view->params['newsletter']->load(Yii::$app->request->post()) && $this->view->params['newsletter']->submit()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
 
