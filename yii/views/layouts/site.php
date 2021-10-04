@@ -58,7 +58,7 @@ AppAsset::register($this);
         <a href="<?=Url::base(true)?>"><img class="header-logo" src="<?=Url::base(true)?>/images/FINAL_Title.png"></a>
       </div>
       <div class="column large-3 medium-2 small-2"> 
-        <a href="<?=Url::base(true)?>/search" class="button search-button float-right" type="button" data-toggle="example-dropdown-bottom-right1"><i class="fas fa-search"></i></a>
+        <a href="<?=Url::base(true)?>/search" class="button search-button float-right" type="button"><i class="fas fa-search"></i></a>
       </div>
       <!-- Start OffCanvas Menu -->
       <div class="off-canvas position-top" id="offCanvasMenu" data-off-canvas>
@@ -101,43 +101,43 @@ AppAsset::register($this);
             </div>
           </div>
         </div>
-      </div>
-      <div class="show-for-small-only">
-        <span data-toggle="offCanvasMenu" aria-hidden="true">×</span>
-        <div class="clearfix"></div>
-        <img class="mobile-offcanvas-logo" src="<?=Url::base(true)?>/images/Logo_Icon.png">
-        <div class="columns large-up-2 medium-up-2 small-up-2">
-          <div class="column">
-            <ul class="vertical dropdown menu accordion-menu align-left f-s-30" data-accordion-menu><br>
-              <?php foreach($this->params['categories'] as $category):?>
-              <li><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=$category->title?></a></li>
-              <?php endforeach;?>
-            </ul>
-          </div>
-          <div class="column">
-            <ul class="vertical dropdown menu accordion-menu align-right f-s-22" data-accordion-menu>
-              <li><br><a href="<?=Url::base(true)?>">Home</a></li>
-              <li><a href="mailto:contact@thephilocalist.gr?subject='Website Contact'" class="f-f-ubuntu">Επικοινωνία</a><br></li>
-            </ul>
-          </div>
-          <div class="column">
-            <ul class="vertical dropdown menu accordion-menu align-left f-s-22" data-accordion-menu>
-              <li><br><br><br><p class="f-s-20 m-b-0 p-b-0">Follow Us</p></li>
-              <li class="d-flex">
-              <?php foreach($this->params['socials'] as $social):?>
-                <?php if($social->name == 'facebook'):?>
-                <a href="<?=$social->link;?>"><i class="fab fa-facebook"></i></a>
-                <?php elseif($social->name == 'pinterest'):?>
-                <a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i></a>
-                <?php elseif($social->name == 'instagram'):?>
-                <a href="<?=$social->link;?>"><i class="fab fa-instagram"></i></a>
-                <?php elseif($social->name == 'twitter'):?>
-                <a href="<?=$social->link;?>"><i class="fas fa-twitter"></i></a>
-                <?php endif;?>
-              <?php endforeach;?>
-                <a href="mailto:contact@thephilocalist.gr?subject='Website Contact'"><i class="fas fa-envelope"></i></a>
-              </li>
-            </ul>
+        <div class="show-for-small-only">
+          <span data-toggle="offCanvasMenu" aria-hidden="true">×</span>
+          <div class="clearfix"></div>
+          <img class="mobile-offcanvas-logo" src="<?=Url::base(true)?>/images/Logo_Icon.png">
+          <div class="columns large-up-2 medium-up-2 small-up-2">
+            <div class="column">
+              <ul class="vertical dropdown menu accordion-menu align-left f-s-30" data-accordion-menu><br>
+                <?php foreach($this->params['categories'] as $category):?>
+                <li><a href="<?=Url::base(true)?>/category/<?=$category->slug?>"><?=$category->title?></a></li>
+                <?php endforeach;?>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="vertical dropdown menu accordion-menu align-right f-s-22" data-accordion-menu>
+                <li><br><a href="<?=Url::base(true)?>">Home</a></li>
+                <li><a href="mailto:contact@thephilocalist.gr?subject='Website Contact'" class="f-f-ubuntu">Επικοινωνία</a><br></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="vertical dropdown menu accordion-menu align-left f-s-22" data-accordion-menu>
+                <li><br><br><br><p class="f-s-20 m-b-0 p-b-0">Follow Us</p></li>
+                <li class="d-flex">
+                <?php foreach($this->params['socials'] as $social):?>
+                  <?php if($social->name == 'facebook'):?>
+                  <a href="<?=$social->link;?>"><i class="fab fa-facebook"></i></a>
+                  <?php elseif($social->name == 'pinterest'):?>
+                  <a href="<?=$social->link;?>"><i class="fab fa-pinterest"></i></a>
+                  <?php elseif($social->name == 'instagram'):?>
+                  <a href="<?=$social->link;?>"><i class="fab fa-instagram"></i></a>
+                  <?php elseif($social->name == 'twitter'):?>
+                  <a href="<?=$social->link;?>"><i class="fas fa-twitter"></i></a>
+                  <?php endif;?>
+                <?php endforeach;?>
+                  <a href="mailto:contact@thephilocalist.gr?subject='Website Contact'"><i class="fas fa-envelope"></i></a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
