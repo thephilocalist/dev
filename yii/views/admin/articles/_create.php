@@ -22,8 +22,11 @@ $categories = Categories::find()->asArray()->all();
   <?= $form->field($model, 'author_id')->dropDownList(ArrayHelper::map($authors, 'id', 'name'), ['prompt'=>'Eπιλέξτε τον author']) ?>
 </div>
 
-<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <?= $form->field($model, 'subtitle')->textInput(['maxlength' => true]) ?>
 </div>
 
 <div class="col-xs-12">

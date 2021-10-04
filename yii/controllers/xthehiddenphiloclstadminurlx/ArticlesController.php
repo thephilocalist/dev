@@ -95,6 +95,9 @@ class ArticlesController extends Controller
                 $model->title = Yii::$app->request->post('Articles')['title'];
                 $model->subtitle = Yii::$app->request->post('Articles')['subtitle'];
                 $model->author_id = Yii::$app->request->post('Articles')['author_id'];
+                $model->main_photo = '';
+                $model->category_photo = '';
+                $model->featured_photo = '';
 
                 if ($model->save()) {
                     return $this->redirect(['update', 'id' => $model->id]);
@@ -207,6 +210,21 @@ class ArticlesController extends Controller
 
     }
 
+    public function actionDelete()
+    {
+        $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
+        $model->delete();
+        $model = new Articles();
+        $searchModel = new ArticlesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('/admin/articles/index', [
+            'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionEnable()
     {
         $model = Articles::find()->where(['id' => Yii::$app->request->get('id')])->one();
@@ -298,7 +316,7 @@ class ArticlesController extends Controller
 
         if ($photo->upload($id)) {
 
-            $model->photo = $photo->main_photo;
+            $model->main_photo = $photo->main_photo;
 
             if ($model->save()) {     
 
@@ -323,7 +341,7 @@ class ArticlesController extends Controller
 
         if ($photo->upload($id)) {
 
-            $model->photo = $photo->featured_photo;
+            $model->featured_photo = $photo->featured_photo;
 
             if ($model->save()) {     
 
@@ -348,7 +366,7 @@ class ArticlesController extends Controller
 
         if ($photo->upload($id)) {
 
-            $model->photo = $photo->category_photo;
+            $model->category_photo = $photo->category_photo;
 
             if ($model->save()) {     
 

@@ -1,26 +1,11 @@
 /* Navigation Fade */
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            $('.sticky-navigation-bar').fadeIn();
-        } else {
-            $('.sticky-navigation-bar').fadeOut();
-        }
-    });
-
-/* ToTop *//* 
 $(window).scroll(function () {
     if ($(this).scrollTop() > 600) {
-        $('.totop').fadeIn();
+        $('.sticky-navigation-bar').fadeIn();
     } else {
-        $('.totop').fadeOut();
+        $('.sticky-navigation-bar').fadeOut();
     }
 });
-$('#top').click(function () {
-    $('body,html').animate({
-        scrollTop: 0
-    }, 999);
-    return false;
-}); */
 
 /* Owl Carousel */
 $('.owl-carousel-featured').owlCarousel({
@@ -28,6 +13,7 @@ loop:true,
 margin:20,
 lazyload:true,
 responsiveClass:true,
+nav:true,
 responsive:{
     0:{
         lazyload:true,
@@ -67,6 +53,7 @@ $('.owl-carousel-category').owlCarousel({
     margin:12,
     lazyload:true,
     responsiveClass:true,
+    nav:true,
     responsive:{
         0:{
             lazyload:true,

@@ -4,7 +4,7 @@ use yii\helpers\Url;
 ?>
 
 <div class="main-article">
-    <a href="<?=Url::base(true)?>/article/<?=$model->slug;?>" class="h_442 main-article-box" data-src="<?=Url::base(true)?>/images/articles/<?=$model->photo?>@1024.jpg" style="background-image: url('<?=Url::base(true)?>/images/articles/<?=$model->photo?>@1024.jpg');">
+    <a href="<?=Url::base(true)?>/article/<?=$model->slug;?>" class="h_442 main-article-box" data-src="<?=Url::base(true)?>/images/articles/<?=$model->featured_photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/articles/<?=$model->featured_photo?>.jpg');">
         <div class="overlay">
         </div>
     </a>

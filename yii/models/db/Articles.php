@@ -239,10 +239,10 @@ class Articles extends \yii\db\ActiveRecord
                     $def->addElement('iframe', 'Block', 'Flow', 'Common', array());
                 }
             });
-/* 
+
             if ($this->isAttributeChanged('published', false) && $this->published == 1) {
                 $this->touch('published_at');
-            } */
+            }
 
             if ($this->isAttributeChanged('category_id', false)) {
                 $this->dirtyCategoryId = 1;

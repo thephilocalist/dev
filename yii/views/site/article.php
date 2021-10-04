@@ -35,7 +35,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 <!-- Start article-image -->
 <div class="row">
   <div class="columns">
-    <img class="article-image" src="<?=Url::base(true)?>/images/articles/<?=$article->photo?>.jpg">
+    <img class="article-image" src="<?=Url::base(true)?>/images/articles/<?=$article->main_photo?>.jpg">
   </div>
 </div>
 <!-- End article-image -->

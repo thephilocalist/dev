@@ -37,7 +37,7 @@ use yii\helpers\Url;
     <div class="clearfix"></div>
     <div class="owl-carousel owl-theme owl-carousel-category">
       <?php foreach($category->articles as $article):?>
-      <div> <?php $this->beginContent('@app/views/site/partials/_medium-article-new.php' , ['model' => $article->article]); ?><?php $this->endContent(); ?></div>
+      <div> <?php $this->beginContent('@app/views/site/partials/_medium-article-new.php' , ['category' =>$category, 'model' => $article->article]); ?><?php $this->endContent(); ?></div>
       <?php endforeach;?>
     </div>
 <div class="clearfix"></div>
