@@ -17,13 +17,13 @@ class CronController extends Controller {
     function actionPublish()
     {
         $date = time();
-        $model = Articles::find()->andWhere(['published' => 0])->andWhere(['<', 'publish_at', $date])->all();
-        foreach($model as $article) {
-            
+        $model = Articles::find()->andWhere(['published' => 0])->all();
+
+        foreach($model as $article) {            
             $article->published = '1';
             $article->save();
             
-            // */5 * * * * kathe 5 lepta php cron/publish
+            // */5 * * * * kathe 5 lepta php cron/publish  ->andWhere(['<', 'publish_at', $date])
         }
     }
 
