@@ -242,7 +242,7 @@ AppAsset::register($this);
         </div>
       </div>
       <div class="spacer-30"></div>
-      <p class="text-center rights">© 2021 The Philocalist <br>All rights are reserved.</p>
+      <p class="text-center rights">© <?=date('Y', time())?>) The Philocalist <br>All rights are reserved.</p>
       <div class="clearfix"></div>   
   </footer>
   <!-- End Footer -->

@@ -29,7 +29,6 @@ foreach ($article_categories as $article_category) {
 foreach ($article_tags as $article_tag) {
     array_push($artcl_tags, $article_tag['tag_id']);
 }
-
 ?>
 
 <div class="box-body">
@@ -52,6 +51,13 @@ foreach ($article_tags as $article_tag) {
     </div>
     <div class=col-lg-4>
             <?= $form->field($model, 'publish_at')->widget(DateTimePicker::className(),[
+                'pluginOptions' => [
+                    'name' => 'datetime_10',
+                    'options' => ['placeholder' => 'Select operating time ...'],
+                    'convertFormat' => true,
+                    'format' => 'M d, yyyy H:i:s',
+                    'startDate' => time(),
+                    ]
             ])->label('Publish at');?>
     </div>
   </div>
