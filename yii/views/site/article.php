@@ -58,7 +58,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
         <div class="author">
           <a href="<?=Url::base(true)?>/author/<?=$article->author->slug?>" class="author-image" data-src="<?=Url::base(true)?>/images/authors/<?=$article->author->photo?>.jpg" style="background-image: url('<?=Url::base(true)?>/images/authors/<?=$article->author->photo?>.jpg');"></a>
           <p><span><?=strtoupper($article->author->name)?></span> <br>
-          <?=date('M d, Y', $article->published_at)?> <span>&#8226;</span> <?=$estimateTime?> read</p>
+          <?php if($article->published): echo date('M d, Y', $article->published_at); endif;?> <span>&#8226;</span> <?=$estimateTime?> read</p>
         </div>
         <div class="share show-for-small-only">
           <a href="https://www.facebook.com/sharer/sharer.php?u=http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>" class="button article-share-btn"><i class="fab fa-facebook"></i></a><br>

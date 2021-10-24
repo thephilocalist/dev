@@ -29,7 +29,9 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
     <h3 class="category-title"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>" class="c-black"><?=$category->title?></a></h3>
     <p class="category-p">CATEGORY</p>
     <div class="clearfix"></div>
+      <?php if($articles):?>
       <?php $this->beginContent('@app/views/site/partials/_category.php', ['category' =>$category, 'model' => $articles[0]]); ?><?php $this->endContent(); ?>
+      <?php endif;?>
     <div class="clearfix"></div>
   </div>
 </div>

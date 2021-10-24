@@ -31,6 +31,7 @@ use yii\helpers\Url;
 <!-- Start - Category - Articles -->
 <div class="columns medium-12 small-12" data-equalizer>
   <?php foreach($categories as $category): ?>
+    <?php if($category->articles):?>
     <h3 class="category-title"><a href="<?=Url::base(true)?>/category/<?=$category->slug?>" class="c-black"> <?=strtoupper($category->title);?></a></h3>
     <div class="clearfix"></div>
     <?php $this->beginContent('@app/views/site/partials/_category.php', ['category' =>$category, 'model' => $category->articles[0]]); ?><?php $this->endContent(); ?>
@@ -40,12 +41,13 @@ use yii\helpers\Url;
       <div> <?php $this->beginContent('@app/views/site/partials/_medium-article-new.php' , ['category' =>$category, 'model' => $article->article]); ?><?php $this->endContent(); ?></div>
       <?php endforeach;?>
     </div>
-<div class="clearfix"></div>
-<div class="spacer-10"></div>
-<div class="clearfix"></div>
-<div class="spacer-10"></div>
-<div class="clearfix"></div>
-<br><a href="<?=Url::base(true)?>/category/<?=$category->slug?>" class="load_more">Περισσότερα άρθρα&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right"></i></a>
+    <div class="clearfix"></div>
+    <div class="spacer-10"></div>
+    <div class="clearfix"></div>
+    <div class="spacer-10"></div>
+    <div class="clearfix"></div>
+    <br><a href="<?=Url::base(true)?>/category/<?=$category->slug?>" class="load_more">Περισσότερα άρθρα&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right"></i></a>
+    <?php endif;?>
   <?php endforeach;?>
 </div>
 <!-- End - Category - Articles -->
