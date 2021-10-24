@@ -9,6 +9,6 @@ use yii\helpers\Url;
         <div class="clearfix"></div>
         <h3><?=$model->article->title?></h3>
         <p class="category-text"><?=substr($model->article->text, 0, 300)?>...</p>
-        <a href="<?=Url::base(true)?>/category/<?=$model->article->slug?>" class="button read-more">Διάβασέ το<br><i class="fas fa-long-arrow-alt-right"></i></a>
+        <a href="<?=Url::base(true)?>/article/<?=$model->article->slug?>" class="button read-more">Διάβασέ το<br><i class="fas fa-long-arrow-alt-right"></i></a>
     </div>
 </div>
