@@ -51,11 +51,13 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
   <div class="columns large-offset-1 large-10 medium-10 medium-offset-1 small-12">
     <div class="small-up-1 medium-up-2 large-up-3">
     <?php foreach($articles as $article):?>
+      <?php if($article->article->published):?>
       <div class="column load-6">
         <?php $this->beginContent('@app/views/site/partials/_medium-category-article.php', ['model' => $article->article]); ?><?php $this->endContent(); ?>
         <div class="clearfix"></div>
         <div class="spacer-50"></div>
       </div>
+      <?php endif;?>
     <?php endforeach;?>
     </div>
   </div>
