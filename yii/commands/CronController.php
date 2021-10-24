@@ -14,7 +14,7 @@ use app\models\db\Articles;
 
 class CronController extends Controller {
 
-    protected function actionPublish()
+    function actionPublish()
     {
         $date = time();
         $model = Articles::find()->andWhere(['published' => 0])->andWhere(['>', 'publish_at', $date])->all();
