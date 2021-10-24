@@ -14,7 +14,7 @@ use yii\helpers\Url;
         <div class="overlay">
         </div>
     </a>
-    <?php endif;?>  
+    <?php endif;?>
     <div class="text-wrapper">
         <div class="clearfix"></div>
         <div class="category">
