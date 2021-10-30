@@ -101,6 +101,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
   <div class="clearfix"></div>
   <div class="columns large-offset-1 large-10 medium-10 medium-offset-1 small-12">
     <div class="small-up-1 medium-up-2 large-up-3">
+    <?php if($reladed_articles):?>
     <?php foreach($reladed_articles as $article):?>
       <div class="column load-6">
         <?php $this->beginContent('@app/views/site/partials/_medium-category-article.php', ['model' => $article->article]); ?><?php $this->endContent(); ?>
@@ -108,6 +109,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
         <div class="spacer-50"></div>
       </div>
     <?php endforeach;?>
+    <?php endif;?>
     </div>
   </div>
     <div class="clearfix"></div>

@@ -152,6 +152,12 @@ class SiteController extends Controller
         $article = Articles::find()->andWhere(['slug' => $slug])->one();
         $article_category = ArticleCategories::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->one();
         $article_tags = ArticleTags::find()->where(['article_id' => $article->id])->orderBy(new Expression('rand()'))->all();
+
+        if($article_category) {
+            $related_articles = $article_category->category->articles;
+        } else {
+            $related_articles = false;
+        }
         
         /* Data for Layout */
         $this->view->params['categories'] = Categories::find()->where(['enable' => '1'])->orderBy(['position' => SORT_ASC])->all();
@@ -177,7 +183,7 @@ class SiteController extends Controller
         }
         return $this->render('article', [
             'article' => $article,
-            'reladed_articles' => $article_category->category->articles,
+            'reladed_articles' => $related_articles,
             'newsletter' => $newsletter,
             'estimateTime' => $estimateTime,
             'article_tags' => $article_tags

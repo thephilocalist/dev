@@ -8,7 +8,7 @@ $this->registerJs(
 
 (function($) {
   $('#description_text').redactor({
-    plugins: ['source', 'video', 'alignment', 'fontcolor', 'bookingButton', 'hotelBar', 'fullscreen'],
+    plugins: ['source', 'video', 'alignment', 'fontcolor', 'bookingButton', 'hotelBar', 'fullscreen','bufferbuttons',],
     imageUpload: '/upload/redactor-photo',
     imageUploadParam: 'imageFile',
     imageUploadFields: {
@@ -24,7 +24,7 @@ $this->registerJs(
 })(jQuery);
 (function($) {
   $('#characteristics_text').redactor({
-    plugins: ['source', 'video', 'alignment', 'fontcolor', 'bookingButton', 'hotelBar', 'fullscreen'],
+    plugins: ['source', 'video', 'alignment', 'fontcolor', 'bookingButton', 'hotelBar', 'fullscreen','bufferbuttons',],
     imageUpload: '/upload/redactor-photo',
     imageUploadParam: 'imageFile',
     imageUploadFields: {

@@ -2,7 +2,7 @@ $('.texts-forms').each(function() {
   var lang = $(this).data('lang');
   (function($) {
     $('#text_' + lang).redactor({
-      plugins: ['video', 'alignment', 'fontsize', 'fontcolor', 'table', 'fullscreen', 'bookingButton', 'hotelBar', 'sliderButton'],
+      plugins: ['video', 'alignment', 'fontsize', 'fontcolor', 'table', 'fullscreen', 'bookingButton', 'hotelBar', 'sliderButton','undo','redo'],
       imageUpload: $("meta[name=path]").attr("content") + '/blog/editor-insert-image',
       imageUploadParam: 'imageFile',
       imageUploadFields: {
@@ -15,7 +15,7 @@ $('.texts-forms').each(function() {
   })(jQuery);
   (function($) {
     $('#facilities_' + lang).redactor({
-      plugins: ['video', 'alignment', 'fontsize', 'fontcolor', 'table', 'fullscreen', 'bookingButton', 'hotelBar', 'sliderButton'],
+      plugins: ['video', 'alignment', 'fontsize', 'fontcolor', 'table', 'fullscreen', 'bookingButton', 'hotelBar', 'sliderButton','undo','redo'],
       imageUpload: $("meta[name=path]").attr("content") + '/blog/editor-insert-image',
       imageUploadParam: 'imageFile',
       imageUploadFields: {

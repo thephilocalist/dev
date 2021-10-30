@@ -1,6 +1,6 @@
 (function($) {
   $('#text').redactor({
-    plugins: ['video', 'alignment', 'fontsize', 'fontcolor', 'table', 'fullscreen'],
+    plugins: ['video', 'alignment', 'fontsize', 'fontcolor', 'table', 'fullscreen','undo','redo'],
     imageUpload: $("meta[name=path]").attr("content") + '/blog/editor-insert-image',
     imageUploadParam: 'imageFile',
     imageUploadFields: {

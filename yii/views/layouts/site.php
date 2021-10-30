@@ -78,6 +78,7 @@ AppAsset::register($this);
                 <div class="column">
                   <ul class="vertical dropdown menu accordion-menu align-right" data-accordion-menu>
                     <li><a class="f-s-36" href="<?=Url::base(true)?>">Home</a></li>
+                    <li><a class="f-s-36" href="<?=Url::base(true)?>/about">About</a></li>
                     <li><a class="f-s-36 f-m-ubuntu">Επικοινωνία</a><br></li>
                     <li><a class="f-s-36" href="<?=Url::base(true)?>"><img class="offcanvas-logo" src="<?=Url::base(true)?>/images/Logo_Icon.png"></a><br></li> 
                     <li><p class="f-s-36 m-b-0">Follow Us</p></li>
@@ -115,7 +116,8 @@ AppAsset::register($this);
             </div>
             <div class="column">
               <ul class="vertical dropdown menu accordion-menu align-right f-s-22" data-accordion-menu>
-                <li><br><a href="<?=Url::base(true)?>">Home</a></li>
+                <li><a href="<?=Url::base(true)?>">Home</a></li>
+                <li><a href="<?=Url::base(true)?>/about">About</a><br></li>
                 <li><a href="mailto:contact@thephilocalist.gr?subject='Website Contact'" class="f-f-ubuntu">Επικοινωνία</a><br></li>
               </ul>
             </div>
@@ -242,7 +244,7 @@ AppAsset::register($this);
         </div>
       </div>
       <div class="spacer-30"></div>
-      <p class="text-center rights">© <?=date('Y', time())?>) The Philocalist <br>All rights are reserved.</p>
+      <p class="text-center rights">© <?=date('Y', time())?> The Philocalist <br>All rights are reserved.</p>
       <div class="clearfix"></div>   
   </footer>
   <!-- End Footer -->

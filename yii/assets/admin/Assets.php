@@ -33,6 +33,7 @@ class Assets extends AssetBundle
       'libs/redactor-250/redactor/video.js',
       'libs/redactor-250/redactor/source.js',
       'libs/redactor-250/redactor/properties.js',
+      'libs/redactor-250/redactor/bufferbuttons.js',
       'admin/js/app.js',
       'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min.js',
       'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.js',
