@@ -181,7 +181,7 @@ AppAsset::register($this);
     <footer>
       <div class="row">
         <div class="column large-3 medium-3 small-12 show-for-medium">
-          <a href="index.html"><img class="footer-logo" src="<?=Url::base(true)?>/images/FINAL_Logo_w_Title.png"></a><br><br><br><br><br>
+          <a href="<?=Url::base(true)?>"><img class="footer-logo" src="<?=Url::base(true)?>/images/FINAL_Logo_w_Title.png"></a><br><br><br><br><br>
         </div>
         <div class="column large-6 medium-6 small-12">
           <div class="subscribe-banner-container">

@@ -1020,6 +1020,31 @@ footer {
   font-family: 'ubuntu'; }
   .article-wrapper p {
     width: 80%;
+    font-family: 'ubuntu';
+    margin: 0 auto; }
+  .article-wrapper h1 {
+    width: 80%;
+    font-family: 'ubuntu';
+    margin: 0 auto; }
+  .article-wrapper h2 {
+    width: 80%;
+    font-family: 'ubuntu';
+    margin: 0 auto; }
+  .article-wrapper h3 {
+    width: 80%;
+    font-family: 'ubuntu';
+    margin: 0 auto; }
+  .article-wrapper h4 {
+    width: 80%;
+    font-family: 'ubuntu';
+    margin: 0 auto; }
+  .article-wrapper h5 {
+    width: 80%;
+    font-family: 'ubuntu';
+    margin: 0 auto; }
+  .article-wrapper h6 {
+    width: 80%;
+    font-family: 'ubuntu';
     margin: 0 auto; }
   .article-wrapper img {
     margin: 50px 0; }
@@ -1196,6 +1221,8 @@ footer {
   .about-title a:focus {
     color: #0a0a0a; }
 
+.about-text p {
+  font-family: 'ubuntu'; }
 .off-canvas {
   font-size: 12px; }
   .off-canvas .dropdown-pane {
@@ -1771,6 +1798,7 @@ input {
     margin-top: 5px;
     font-family: 'ubuntu'; }
     .about-text p {
+      font-family: 'ubuntu';
       font-size: 18px !important; }
   .vertical.dropdown.menu.accordion-menu.align-left.f-s-30 a {
     padding-bottom: 0;

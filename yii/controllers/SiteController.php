@@ -172,7 +172,7 @@ class SiteController extends Controller
         $newsletter = new NewsletterForm();
         $this->view->params['newsletter'] = $newsletter;
 
-        $total_word = str_word_count(strip_tags($article->text));
+        $total_word = str_word_count(strip_tags($article->text), 0, 'ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΩαβγδεζηθικλμνξοπρστωABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
         $m = floor($total_word / 230);
         $s = floor($total_word % 230 / (230 / 60));
         $estimateTime = $m . ' minute' . ($m == 1 ? '' : 's');

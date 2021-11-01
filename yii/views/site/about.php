@@ -35,7 +35,7 @@ Yii::$app->view->registerMetaTag(['itemprop' => 'image', 'content' => $metaPhoto
 </div>
 <div class="row"> 
     <div class="columns large-offset-2 large-8 medium-10 medium-offset-1 small-10 small-offset-1">
-        <p class="about-text"><?=$about->text;?></p>
+        <div class="about-text"><?=$about->text;?></div>
     </div>
 </div>
 <div class="spacer-100"></div>
