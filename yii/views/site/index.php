@@ -56,3 +56,12 @@ use yii\helpers\Url;
 
 <div class="clearfix"></div>
 <div class="spacer-100"></div>
+
+<!-- Start Instagram -->
+<div class="columns medium-10 small-12 medium-offset-1" data-equalizer>
+  <h3 style="font-size:28px;margin-bottom:50px;" class="text-center">INSTAGMAR</h3>
+  <div class="taggbox-container" style="width:100%;height:100%;overflow: auto;"><div class="taggbox-socialwall" data-wall-id="76245" view-url="https://widget.taggbox.com/76245"></div><script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script></div>
+</div>
+<!-- End Instagram -->
+<div class="clearfix"></div>
+<div class="spacer-100"></div>
