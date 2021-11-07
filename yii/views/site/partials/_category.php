@@ -8,7 +8,7 @@ use yii\helpers\Url;
         <p class="f-right tag"><?=strtoupper($model->article->categories[0]->category->title)?> | <?=strtoupper($model->article->tags[0]->tag->title)?></p>
         <div class="clearfix"></div>
         <h3><?=$model->article->title?></h3>
-        <p class="category-text"><?=substr(substr($model->article->text, 0, 100), 0, 99)?>...</p>
+        <p class="category-text"><?=mb_substr($model->article->text, 0, 100)?>...</p>
         <a href="<?=Url::base(true)?>/article/<?=$model->article->slug?>" class="button read-more">Διάβασέ το<br><i class="fas fa-long-arrow-alt-right"></i></a>
     </div>
 </div>
