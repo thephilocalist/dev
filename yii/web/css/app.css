@@ -1250,7 +1250,10 @@ footer {
   font-size: 20px !important; }
   .article-main-text p {
     font-size: 20px !important; }
-
+    
+.article-main-text .article-wrapper img{
+  margin-bottom: 0 !important;
+}
 .about-us-wrapper {
   padding: 100px 25px;
   color: #0a0a0a; }
